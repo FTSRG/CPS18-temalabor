@@ -29,13 +29,13 @@
 		</module>
 		<module name="interface">
 			<module name="Weather">
-				<struct name= "Temperature" baseType="abstract::Weather::Weather">
-					<member name="value" type="double"/>
-				</struct>
 				<struct name="TemperatureForecast" baseType="abstract::Weather::Weather">
 					<member name="forecastTime" type="string"/>
 					<member name="minimum" type="double"/>
 					<member name="maximum" type="double"/>
+				</struct>
+				<struct name= "Temperature" baseType="abstract::Weather::Weather">
+					<member name="value" type="double"/>
 				</struct>
 			</module>
 		</module>
