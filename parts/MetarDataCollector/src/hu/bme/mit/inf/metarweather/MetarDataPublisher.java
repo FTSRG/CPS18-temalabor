@@ -1,4 +1,5 @@
 package hu.bme.mit.inf.metarweather;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -32,7 +33,7 @@ import hu.bme.mit.inf.weather.weather.AirportWeather.AirportWeatherDataDataWrite
 import hu.bme.mit.inf.weather.weather.AirportWeather.AirportWeatherDataTypeSupport;
 import javafx.util.Pair;
 
-public class Main {
+public class MetarDataPublisher {
 	public static List<AirportWeatherData> metars = new ArrayList<AirportWeatherData>();
 	
 	public static void getMetar(){
