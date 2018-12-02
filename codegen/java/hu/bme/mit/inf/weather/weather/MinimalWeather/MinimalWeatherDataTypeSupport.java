@@ -269,7 +269,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
             MinimalWeatherData typedSrc = (MinimalWeatherData) src;
 
-            dst.writeDouble(typedSrc.Temerature);
+            dst.writeDouble(typedSrc.Temperature);
 
             dst.writeDouble(typedSrc.Humidity);
 
@@ -338,7 +338,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
             MinimalWeatherData typedDst = (MinimalWeatherData) dst;
             typedDst.clear();      
             try{
-                typedDst.Temerature = src.readDouble();
+                typedDst.Temperature = src.readDouble();
                 typedDst.Humidity = src.readDouble();
                 typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.metadata, src, false, true, endpoint_plugin_qos);     
             } catch (IllegalCdrStateException stateEx) {
