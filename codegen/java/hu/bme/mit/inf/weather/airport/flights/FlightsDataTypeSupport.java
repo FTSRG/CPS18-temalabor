@@ -8,7 +8,7 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-package hu.bme.mit.inf.weather.weather.MinimalWeather;
+package hu.bme.mit.inf.weather.airport.flights;
 
 import com.rti.dds.cdr.CdrEncapsulation;
 import com.rti.dds.cdr.CdrInputStream;
@@ -41,19 +41,19 @@ import com.rti.dds.infrastructure.Copyable;
 
 /**
 * A collection of useful methods for dealing with objects of type
-* MinimalWeatherData
+* FlightsData
 */
 
-public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
+public class FlightsDataTypeSupport extends TypeSupportImpl {
     // -----------------------------------------------------------------------
     // Private Fields
     // -----------------------------------------------------------------------
 
-    private static final String TYPE_NAME = "weather::MinimalWeather::MinimalWeatherData";
+    private static final String TYPE_NAME = "airport::flights::FlightsData";
 
     private static final char[] PLUGIN_VERSION = {2, 0, 0, 0};     
-    private static final MinimalWeatherDataTypeSupport _singleton
-    = new MinimalWeatherDataTypeSupport();
+    private static final FlightsDataTypeSupport _singleton
+    = new FlightsDataTypeSupport();
 
     // -----------------------------------------------------------------------
     // Public Methods
@@ -82,34 +82,34 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     * They should be used directly or modified only by advanced users and are
     * subject to change in future versions of RTI Connext.
     */
-    public static MinimalWeatherDataTypeSupport get_instance() {
+    public static FlightsDataTypeSupport get_instance() {
         return _singleton;
     }
 
-    public static MinimalWeatherDataTypeSupport getInstance() {
+    public static FlightsDataTypeSupport getInstance() {
         return get_instance();
     }
 
     public static TypeCode getTypeCode(){
-        return MinimalWeatherDataTypeCode.VALUE;
+        return FlightsDataTypeCode.VALUE;
     }
 
     public Object create_data() {
-        return MinimalWeatherData.create();
+        return FlightsData.create();
     }
 
     public void destroy_data(Object data) {
         return;
     }
     public Object create_key() {
-        return new MinimalWeatherData();
+        return new FlightsData();
     }
 
     public void destroy_key(Object key) {
         return;
     }
     public Class get_type() {
-        return MinimalWeatherData.class;
+        return FlightsData.class;
     }
 
     /**
@@ -122,13 +122,13 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     * @exception NullPointerException If <code>destination</code> or 
     * <code>source</code> is null.
     * @exception ClassCastException If either <code>destination</code> or
-    * <code>this</code> is not a <code>MinimalWeatherData</code>
+    * <code>this</code> is not a <code>FlightsData</code>
     * type.
     */
     public Object copy_data(Object destination, Object source) {
 
-        MinimalWeatherData typedDst = (MinimalWeatherData) destination;
-        MinimalWeatherData typedSrc = (MinimalWeatherData) source;
+        FlightsData typedDst = (FlightsData) destination;
+        FlightsData typedSrc = (FlightsData) source;
 
         return typedDst.copy_from(typedSrc);
 
@@ -150,9 +150,11 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
             origAlignment = 0;
         } 
 
-        currentAlignment += CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment += CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment +=hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment +=hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment += CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment +=CdrPrimitiveType.getStringMaxSizeSerialized(currentAlignment, (5)+1);
+        currentAlignment +=CdrPrimitiveType.getStringMaxSizeSerialized(currentAlignment, (5)+1);
+        currentAlignment += CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
         }
@@ -176,9 +178,11 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
             origAlignment = 0;
         } 
 
-        currentAlignment +=CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment +=CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment += hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment += hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment +=CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment += CdrPrimitiveType.getStringMaxSizeSerialized(currentAlignment, 1);
+        currentAlignment += CdrPrimitiveType.getStringMaxSizeSerialized(currentAlignment, 1);
+        currentAlignment +=CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
 
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
@@ -193,7 +197,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
         Object sample) 
     {
 
-        MinimalWeatherData typedSrc = (MinimalWeatherData) sample;
+        FlightsData typedSrc = (FlightsData) sample;
         DefaultEndpointData epd = ((DefaultEndpointData) endpoint_data) ;
         long origAlignment = currentAlignment;
         long encapsulation_size = currentAlignment;
@@ -211,12 +215,16 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
             epd.setBaseAlignment(currentAlignment);
         } 
 
-        currentAlignment  +=  CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
-
-        currentAlignment  +=  CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
-
-        currentAlignment += hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_size(
+        currentAlignment += hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().get_serialized_sample_size(
             endpoint_data,false,encapsulation_id,currentAlignment,typedSrc.metadata);
+
+        currentAlignment  +=  CdrPrimitiveType.INT.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
+
+        currentAlignment  +=  CdrPrimitiveType.getStringSerializedSize(epd.getAlignment(currentAlignment), typedSrc.originAirport );
+
+        currentAlignment  +=  CdrPrimitiveType.getStringSerializedSize(epd.getAlignment(currentAlignment), typedSrc.destinationAirport );
+
+        currentAlignment  +=  CdrPrimitiveType.INT.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
 
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
@@ -267,13 +275,17 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if(serialize_sample) {
 
-            MinimalWeatherData typedSrc = (MinimalWeatherData) src;
+            FlightsData typedSrc = (FlightsData) src;
 
-            dst.writeDouble(typedSrc.Temperature);
+            hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.metadata, dst, false, encapsulation_id,true,endpoint_plugin_qos);
 
-            dst.writeDouble(typedSrc.Humidity);
+            dst.writeInt(typedSrc.id);
 
-            hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.metadata, dst, false, encapsulation_id,true,endpoint_plugin_qos);
+            dst.writeString(typedSrc.originAirport,5);
+
+            dst.writeString(typedSrc.destinationAirport,5);
+
+            dst.writeInt(typedSrc.weatherDelay);
         }
 
         if (serialize_encapsulation) {
@@ -284,7 +296,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     public long serialize_to_cdr_buffer(
         byte[] buffer,
         long length,
-        MinimalWeatherData src)
+        FlightsData src)
     {
         return super.serialize_to_cdr_buffer(buffer,length,src);
     }
@@ -308,7 +320,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if (serialize_key) {
 
-            MinimalWeatherData typedSrc = (MinimalWeatherData) src;    
+            FlightsData typedSrc = (FlightsData) src;    
             serialize(endpoint_data, src, dst, false, CdrEncapsulation.CDR_ENCAPSULATION_ID_CDR_BE, true, endpoint_plugin_qos);
 
         }
@@ -335,12 +347,14 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if(deserialize_sample) {
 
-            MinimalWeatherData typedDst = (MinimalWeatherData) dst;
+            FlightsData typedDst = (FlightsData) dst;
             typedDst.clear();      
             try{
-                typedDst.Temperature = src.readDouble();
-                typedDst.Humidity = src.readDouble();
-                typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.metadata, src, false, true, endpoint_plugin_qos);     
+                typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.metadata, src, false, true, endpoint_plugin_qos);     
+                typedDst.id = src.readInt();
+                typedDst.originAirport = src.readString(5);
+                typedDst.destinationAirport = src.readString(5);
+                typedDst.weatherDelay = src.readInt();
             } catch (IllegalCdrStateException stateEx) {
                 if (src.available() >= CdrEncapsulation.CDR_ENCAPSULATION_PARAMETER_ID_ALIGNMENT) {
                     throw new RETCODE_ERROR("Error deserializing sample! Remainder: " + src.available() + "\n" +
@@ -359,7 +373,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     }
 
     public void deserialize_from_cdr_buffer(
-        MinimalWeatherData dst,
+        FlightsData dst,
         byte[] buffer,
         long length) 
     {
@@ -367,14 +381,14 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     }
 
     public String data_to_string(
-        MinimalWeatherData sample,
+        FlightsData sample,
         PrintFormatProperty property) 
     {
         return super.data_to_string(sample, property);
     }
 
     public String data_to_string(
-        MinimalWeatherData sample) 
+        FlightsData sample) 
     {
         return super.data_to_string(sample);
     }
@@ -397,7 +411,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if(deserialize_key) {
 
-            MinimalWeatherData typedDst = (MinimalWeatherData) dst;
+            FlightsData typedDst = (FlightsData) dst;
 
             deserialize_sample(endpoint_data, dst, src, false, true, endpoint_plugin_qos);
 
@@ -425,11 +439,15 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if (skip_sample) {
 
-            src.skipDouble();
+            hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
 
-            src.skipDouble();
+            src.skipInt();
 
-            hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
+            src.skipString();
+
+            src.skipString();
+
+            src.skipInt();
 
         }
 
@@ -457,7 +475,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         if (deserialize_key) {
 
-            MinimalWeatherData typedDst = (MinimalWeatherData) sample;
+            FlightsData typedDst = (FlightsData) sample;
 
             deserialize_sample(
                 endpoint_data, sample, src, false,
@@ -508,14 +526,14 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     protected DataWriter create_datawriter(long native_writer,
     DataWriterListener listener,
     int mask) {
-        return new MinimalWeatherDataDataWriter (native_writer, listener, mask, this);            
+        return new FlightsDataDataWriter (native_writer, listener, mask, this);            
     }
 
     protected DataReader create_datareader(long native_reader,
     DataReaderListener listener,
     int mask) {
 
-        return new MinimalWeatherDataDataReader(native_reader, listener, mask, this);   
+        return new FlightsDataDataReader(native_reader, listener, mask, this);   
 
     }
 
@@ -523,19 +541,19 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
     // Constructor
     // -----------------------------------------------------------------------
 
-    protected MinimalWeatherDataTypeSupport() {
+    protected FlightsDataTypeSupport() {
 
         /* If the user data type supports keys, then the second argument
         to the constructor below should be true.  Otherwise it should
         be false. */        
 
-        super(TYPE_NAME, false,MinimalWeatherDataTypeCode.VALUE,MinimalWeatherData.class,TypeSupportType.TST_STRUCT, PLUGIN_VERSION);
+        super(TYPE_NAME, false,FlightsDataTypeCode.VALUE,FlightsData.class,TypeSupportType.TST_STRUCT, PLUGIN_VERSION);
 
     }
 
-    protected MinimalWeatherDataTypeSupport (boolean enableKeySupport) {
+    protected FlightsDataTypeSupport (boolean enableKeySupport) {
 
-        super(TYPE_NAME, enableKeySupport,MinimalWeatherDataTypeCode.VALUE,MinimalWeatherData.class,TypeSupportType.TST_STRUCT, PLUGIN_VERSION);
+        super(TYPE_NAME, enableKeySupport,FlightsDataTypeCode.VALUE,FlightsData.class,TypeSupportType.TST_STRUCT, PLUGIN_VERSION);
     }
 }
 

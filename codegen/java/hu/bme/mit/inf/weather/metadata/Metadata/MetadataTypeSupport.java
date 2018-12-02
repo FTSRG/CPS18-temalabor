@@ -150,8 +150,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
             origAlignment = 0;
         } 
 
-        currentAlignment += CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment += CdrPrimitiveType.LONG.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment += CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(currentAlignment) ;
         currentAlignment +=hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment +=hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
         }
@@ -175,8 +177,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
             origAlignment = 0;
         } 
 
-        currentAlignment +=CdrPrimitiveType.INT.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment +=CdrPrimitiveType.LONG.getMaxSizeSerialized(currentAlignment) ;
+        currentAlignment +=CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(currentAlignment) ;
         currentAlignment += hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment += hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
 
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
@@ -209,10 +213,15 @@ public class MetadataTypeSupport extends TypeSupportImpl {
             epd.setBaseAlignment(currentAlignment);
         } 
 
-        currentAlignment  +=  CdrPrimitiveType.INT.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
+        currentAlignment  +=  CdrPrimitiveType.LONG.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
+
+        currentAlignment  +=  CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
 
         currentAlignment += hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_size(
             endpoint_data,false,encapsulation_id,currentAlignment,typedSrc.location);
+
+        currentAlignment += hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().get_serialized_sample_size(
+            endpoint_data,false,encapsulation_id,currentAlignment,typedSrc.source);
 
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
@@ -265,9 +274,13 @@ public class MetadataTypeSupport extends TypeSupportImpl {
 
             Metadata typedSrc = (Metadata) src;
 
-            dst.writeInt(typedSrc.timestamp);
+            dst.writeLong(typedSrc.timestamp);
+
+            dst.writeBoolean(typedSrc.isValid);
 
             hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.location, dst, false, encapsulation_id,true,endpoint_plugin_qos);
+
+            hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.source, dst, false, encapsulation_id,true,endpoint_plugin_qos);
         }
 
         if (serialize_encapsulation) {
@@ -332,8 +345,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
             Metadata typedDst = (Metadata) dst;
             typedDst.clear();      
             try{
-                typedDst.timestamp = src.readInt();
+                typedDst.timestamp = src.readLong();
+                typedDst.isValid = src.readBoolean();
                 typedDst.location = (hu.bme.mit.inf.weather.metadata.Location.LocationData)hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.location, src, false, true, endpoint_plugin_qos);     
+                typedDst.source = (hu.bme.mit.inf.weather.metadata.Source.SourceData)hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.source, src, false, true, endpoint_plugin_qos);     
             } catch (IllegalCdrStateException stateEx) {
                 if (src.available() >= CdrEncapsulation.CDR_ENCAPSULATION_PARAMETER_ID_ALIGNMENT) {
                     throw new RETCODE_ERROR("Error deserializing sample! Remainder: " + src.available() + "\n" +
@@ -418,9 +433,13 @@ public class MetadataTypeSupport extends TypeSupportImpl {
 
         if (skip_sample) {
 
-            src.skipInt();
+            src.skipLong();
+
+            src.skipBoolean();
 
             hu.bme.mit.inf.weather.metadata.Location.LocationDataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
+
+            hu.bme.mit.inf.weather.metadata.Source.SourceDataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
 
         }
 

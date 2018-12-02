@@ -2,6 +2,11 @@
 <dds version="5.2.0" xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.0/rti_dds_profiles.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<types xsi:noNamespaceSchemaLocation="file:///C:/Program Files/rti_connext_dds-5.3.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
 		<module name="metadata">
+			<module name="Source">
+				<struct name="SourceData">
+					<member name="name" type="string" stringMaxLength="60"/>
+				</struct>
+			</module>
 			<module name="Location">
 				<struct name="LocationData">
 					<member name="name" type="string" stringMaxLength="60"/>
@@ -11,15 +16,17 @@
 			</module>
 			<module name="Metadata">
 				<struct name="Metadata">
-					<member name="timestamp" type="long"/>
+					<member name="timestamp" type="longLong"/>
+					<member name="isValid" type="boolean"/>
 					<member name="location" type="nonBasic" nonBasicTypeName="metadata::Location::LocationData"/>
+					<member name="source" type="nonBasic" nonBasicTypeName="metadata::Source::SourceData"/>
 				</struct>
 			</module>
 		</module>
 		<module name="weather">
 			<module name="MinimalWeather">
 				<struct name="MinimalWeatherData">
-					<member name="Temerature" type="double"/>
+					<member name="Temperature" type="double"/>
 					<member name="Humidity" type="double"/>
 					<member name="metadata" type="nonBasic" nonBasicTypeName="metadata::Metadata"/>
 				</struct>
@@ -54,6 +61,17 @@
 				</struct>
 			</module>
 		</module>
+		<module name="airport">
+			<module name="flights">
+				<struct name="FlightsData">
+					<member name="metadata" type="nonBasic" nonBasicTypeName="metadata::Metadata::Metadata"/>
+					<member name="id" type="long"/>
+					<member name="originAirport" type="string" stringMaxLength="5"/>
+					<member name="destinationAirport" type="string" stringMaxLength="5"/>
+					<member name="weatherDelay" type="long"/>
+				</struct>
+			</module>
+		</module>
 	</types>
 	
 	<!-- QoS profiles-->
@@ -67,9 +85,11 @@
 			<register_type kind="dynamicData" name="minimalWeather" type_ref="weather::MinimalWeather::MinimalWeatherData"/>
 			<register_type kind="dynamicData" name="forecastInputWeather" type_ref="weather::ForecastInputWeather::ForecastInputWeatherData"/>
 			<register_type kind="dynamicData" name="airportWeather" type_ref="weather::AirportWeather::AirportWeatherData"/>
+			<register_type kind="dynamicData" name="flightsData" type_ref="airport::flights::FlightsData"/>
 			<topic name="MinimalWeather" register_type_ref="minimalWeather"/>
 			<topic name="ForecastInputWeather" register_type_ref="forecastInputWeather"/>
 			<topic name="AirportWeather" register_type_ref="airportWeather"/>
+			<topic name="FlightsData" register_type_ref="flightsData"/>
       </domain>
     </domain_library>
 

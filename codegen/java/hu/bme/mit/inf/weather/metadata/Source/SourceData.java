@@ -9,23 +9,21 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-package hu.bme.mit.inf.weather.weather.MinimalWeather;
+package hu.bme.mit.inf.weather.metadata.Source;
 
 import com.rti.dds.infrastructure.*;
 import com.rti.dds.infrastructure.Copyable;
 import java.io.Serializable;
 import com.rti.dds.cdr.CdrHelper;
 
-public class MinimalWeatherData   implements Copyable, Serializable{
+public class SourceData   implements Copyable, Serializable{
 
-    public double Temperature= 0;
-    public double Humidity= 0;
-    public hu.bme.mit.inf.weather.metadata.Metadata metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.create();
+    public String name=  "" ; /* maximum length = (60) */
 
-    public MinimalWeatherData() {
+    public SourceData() {
 
     }
-    public MinimalWeatherData (MinimalWeatherData other) {
+    public SourceData (SourceData other) {
 
         this();
         copy_from(other);
@@ -33,8 +31,8 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public static Object create() {
 
-        MinimalWeatherData self;
-        self = new  MinimalWeatherData();
+        SourceData self;
+        self = new  SourceData();
         self.clear();
         return self;
 
@@ -42,11 +40,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public void clear() {
 
-        Temperature= 0;
-        Humidity= 0;
-        if (metadata != null) {
-            metadata.clear();
-        }
+        name=  ""; 
     }
 
     public boolean equals(Object o) {
@@ -59,15 +53,9 @@ public class MinimalWeatherData   implements Copyable, Serializable{
             return false;
         }
 
-        MinimalWeatherData otherObj = (MinimalWeatherData)o;
+        SourceData otherObj = (SourceData)o;
 
-        if(Temperature != otherObj.Temperature) {
-            return false;
-        }
-        if(Humidity != otherObj.Humidity) {
-            return false;
-        }
-        if(!metadata.equals(otherObj.metadata)) {
+        if(!name.equals(otherObj.name)) {
             return false;
         }
 
@@ -76,16 +64,14 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public int hashCode() {
         int __result = 0;
-        __result += (int)Temperature;
-        __result += (int)Humidity;
-        __result += metadata.hashCode(); 
+        __result += name.hashCode(); 
         return __result;
     }
 
     /**
     * This is the implementation of the <code>Copyable</code> interface.
     * This method will perform a deep copy of <code>src</code>
-    * This method could be placed into <code>MinimalWeatherDataTypeSupport</code>
+    * This method could be placed into <code>SourceDataTypeSupport</code>
     * rather than here by using the <code>-noCopyable</code> option
     * to rtiddsgen.
     * 
@@ -98,12 +84,10 @@ public class MinimalWeatherData   implements Copyable, Serializable{
     */
     public Object copy_from(Object src) {
 
-        MinimalWeatherData typedSrc = (MinimalWeatherData) src;
-        MinimalWeatherData typedDst = this;
+        SourceData typedSrc = (SourceData) src;
+        SourceData typedDst = this;
 
-        typedDst.Temperature = typedSrc.Temperature;
-        typedDst.Humidity = typedSrc.Humidity;
-        typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
+        typedDst.name = typedSrc.name;
 
         return this;
     }
@@ -121,10 +105,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
         }
 
         CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("Temperature: ").append(Temperature).append("\n");  
-        CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("Humidity: ").append(Humidity).append("\n");  
-        strBuffer.append(metadata.toString("metadata ", indent+1));
+        strBuffer.append("name: ").append(name).append("\n");  
 
         return strBuffer.toString();
     }

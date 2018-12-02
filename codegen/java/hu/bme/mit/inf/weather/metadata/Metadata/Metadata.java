@@ -18,8 +18,10 @@ import com.rti.dds.cdr.CdrHelper;
 
 public class Metadata   implements Copyable, Serializable{
 
-    public int timestamp= 0;
+    public long timestamp= 0;
+    public boolean isValid= false;
     public hu.bme.mit.inf.weather.metadata.Location.LocationData location = (hu.bme.mit.inf.weather.metadata.Location.LocationData)hu.bme.mit.inf.weather.metadata.Location.LocationData.create();
+    public hu.bme.mit.inf.weather.metadata.Source.SourceData source = (hu.bme.mit.inf.weather.metadata.Source.SourceData)hu.bme.mit.inf.weather.metadata.Source.SourceData.create();
 
     public Metadata() {
 
@@ -42,8 +44,12 @@ public class Metadata   implements Copyable, Serializable{
     public void clear() {
 
         timestamp= 0;
+        isValid= false;
         if (location != null) {
             location.clear();
+        }
+        if (source != null) {
+            source.clear();
         }
     }
 
@@ -62,7 +68,13 @@ public class Metadata   implements Copyable, Serializable{
         if(timestamp != otherObj.timestamp) {
             return false;
         }
+        if(isValid != otherObj.isValid) {
+            return false;
+        }
         if(!location.equals(otherObj.location)) {
+            return false;
+        }
+        if(!source.equals(otherObj.source)) {
             return false;
         }
 
@@ -72,7 +84,9 @@ public class Metadata   implements Copyable, Serializable{
     public int hashCode() {
         int __result = 0;
         __result += (int)timestamp;
+        __result += (isValid == true)?1:0;
         __result += location.hashCode(); 
+        __result += source.hashCode(); 
         return __result;
     }
 
@@ -96,7 +110,9 @@ public class Metadata   implements Copyable, Serializable{
         Metadata typedDst = this;
 
         typedDst.timestamp = typedSrc.timestamp;
+        typedDst.isValid = typedSrc.isValid;
         typedDst.location = (hu.bme.mit.inf.weather.metadata.Location.LocationData) typedDst.location.copy_from(typedSrc.location);
+        typedDst.source = (hu.bme.mit.inf.weather.metadata.Source.SourceData) typedDst.source.copy_from(typedSrc.source);
 
         return this;
     }
@@ -115,7 +131,10 @@ public class Metadata   implements Copyable, Serializable{
 
         CdrHelper.printIndent(strBuffer, indent+1);        
         strBuffer.append("timestamp: ").append(timestamp).append("\n");  
+        CdrHelper.printIndent(strBuffer, indent+1);        
+        strBuffer.append("isValid: ").append(isValid).append("\n");  
         strBuffer.append(location.toString("location ", indent+1));
+        strBuffer.append(source.toString("source ", indent+1));
 
         return strBuffer.toString();
     }

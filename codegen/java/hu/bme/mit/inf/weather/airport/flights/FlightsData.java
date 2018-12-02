@@ -9,23 +9,25 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-package hu.bme.mit.inf.weather.weather.MinimalWeather;
+package hu.bme.mit.inf.weather.airport.flights;
 
 import com.rti.dds.infrastructure.*;
 import com.rti.dds.infrastructure.Copyable;
 import java.io.Serializable;
 import com.rti.dds.cdr.CdrHelper;
 
-public class MinimalWeatherData   implements Copyable, Serializable{
+public class FlightsData   implements Copyable, Serializable{
 
-    public double Temperature= 0;
-    public double Humidity= 0;
-    public hu.bme.mit.inf.weather.metadata.Metadata metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.create();
+    public hu.bme.mit.inf.weather.metadata.Metadata.Metadata metadata = (hu.bme.mit.inf.weather.metadata.Metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.Metadata.create();
+    public int id= 0;
+    public String originAirport=  "" ; /* maximum length = (5) */
+    public String destinationAirport=  "" ; /* maximum length = (5) */
+    public int weatherDelay= 0;
 
-    public MinimalWeatherData() {
+    public FlightsData() {
 
     }
-    public MinimalWeatherData (MinimalWeatherData other) {
+    public FlightsData (FlightsData other) {
 
         this();
         copy_from(other);
@@ -33,8 +35,8 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public static Object create() {
 
-        MinimalWeatherData self;
-        self = new  MinimalWeatherData();
+        FlightsData self;
+        self = new  FlightsData();
         self.clear();
         return self;
 
@@ -42,11 +44,13 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public void clear() {
 
-        Temperature= 0;
-        Humidity= 0;
         if (metadata != null) {
             metadata.clear();
         }
+        id= 0;
+        originAirport=  ""; 
+        destinationAirport=  ""; 
+        weatherDelay= 0;
     }
 
     public boolean equals(Object o) {
@@ -59,15 +63,21 @@ public class MinimalWeatherData   implements Copyable, Serializable{
             return false;
         }
 
-        MinimalWeatherData otherObj = (MinimalWeatherData)o;
+        FlightsData otherObj = (FlightsData)o;
 
-        if(Temperature != otherObj.Temperature) {
-            return false;
-        }
-        if(Humidity != otherObj.Humidity) {
-            return false;
-        }
         if(!metadata.equals(otherObj.metadata)) {
+            return false;
+        }
+        if(id != otherObj.id) {
+            return false;
+        }
+        if(!originAirport.equals(otherObj.originAirport)) {
+            return false;
+        }
+        if(!destinationAirport.equals(otherObj.destinationAirport)) {
+            return false;
+        }
+        if(weatherDelay != otherObj.weatherDelay) {
             return false;
         }
 
@@ -76,16 +86,18 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public int hashCode() {
         int __result = 0;
-        __result += (int)Temperature;
-        __result += (int)Humidity;
         __result += metadata.hashCode(); 
+        __result += (int)id;
+        __result += originAirport.hashCode(); 
+        __result += destinationAirport.hashCode(); 
+        __result += (int)weatherDelay;
         return __result;
     }
 
     /**
     * This is the implementation of the <code>Copyable</code> interface.
     * This method will perform a deep copy of <code>src</code>
-    * This method could be placed into <code>MinimalWeatherDataTypeSupport</code>
+    * This method could be placed into <code>FlightsDataTypeSupport</code>
     * rather than here by using the <code>-noCopyable</code> option
     * to rtiddsgen.
     * 
@@ -98,12 +110,14 @@ public class MinimalWeatherData   implements Copyable, Serializable{
     */
     public Object copy_from(Object src) {
 
-        MinimalWeatherData typedSrc = (MinimalWeatherData) src;
-        MinimalWeatherData typedDst = this;
+        FlightsData typedSrc = (FlightsData) src;
+        FlightsData typedDst = this;
 
-        typedDst.Temperature = typedSrc.Temperature;
-        typedDst.Humidity = typedSrc.Humidity;
-        typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
+        typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata.Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
+        typedDst.id = typedSrc.id;
+        typedDst.originAirport = typedSrc.originAirport;
+        typedDst.destinationAirport = typedSrc.destinationAirport;
+        typedDst.weatherDelay = typedSrc.weatherDelay;
 
         return this;
     }
@@ -120,11 +134,15 @@ public class MinimalWeatherData   implements Copyable, Serializable{
             strBuffer.append(desc).append(":\n");
         }
 
-        CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("Temperature: ").append(Temperature).append("\n");  
-        CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("Humidity: ").append(Humidity).append("\n");  
         strBuffer.append(metadata.toString("metadata ", indent+1));
+        CdrHelper.printIndent(strBuffer, indent+1);        
+        strBuffer.append("id: ").append(id).append("\n");  
+        CdrHelper.printIndent(strBuffer, indent+1);        
+        strBuffer.append("originAirport: ").append(originAirport).append("\n");  
+        CdrHelper.printIndent(strBuffer, indent+1);        
+        strBuffer.append("destinationAirport: ").append(destinationAirport).append("\n");  
+        CdrHelper.printIndent(strBuffer, indent+1);        
+        strBuffer.append("weatherDelay: ").append(weatherDelay).append("\n");  
 
         return strBuffer.toString();
     }
