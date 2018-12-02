@@ -17,6 +17,60 @@ using namespace DDS;
 
 namespace metadata {
 
+    namespace Source {
+
+        public ref struct SourceData
+        :  public DDS::ICopyable<SourceData^> {
+            // --- Declared members: -------------------------------------------------
+          public: 
+
+            System::String^ name;
+
+            // --- Static constants: -------------------------------------    
+          public:
+
+            // --- Constructors and destructors: -------------------------------------
+          public:
+            SourceData();
+
+            // --- Utility methods: --------------------------------------------------
+          public:
+
+            virtual void clear() ;
+
+            virtual System::Boolean copy_from(SourceData^ src);
+
+            virtual System::Boolean Equals(System::Object^ other) override;
+            static DDS::TypeCode^ get_typecode();
+
+          private:
+            static DDS::TypeCode^ _typecode;
+
+        }; // class SourceData
+
+        public ref class SourceDataSeq sealed
+        : public DDS::UserRefSequence<SourceData^> {
+          public:
+            SourceDataSeq() :
+                DDS::UserRefSequence<SourceData^>() {
+                    // empty
+            }
+            SourceDataSeq(System::Int32 max) :
+                DDS::UserRefSequence<SourceData^>(max) {
+                    // empty
+            }
+            SourceDataSeq(SourceDataSeq^ src) :
+                DDS::UserRefSequence<SourceData^>(src) {
+                    // empty
+            }
+        };
+
+        #define NDDSUSERDllExport
+
+        NDDSUSERDllExport DDS_TypeCode* SourceData_get_typecode();
+
+    } /* namespace Source  */
+
     namespace Location {
 
         public ref struct LocationData
@@ -82,6 +136,7 @@ namespace metadata {
 
             System::Int32 timestamp;
             metadata::Location::LocationData^ location;
+            metadata::Source::SourceData^ source;
 
             // --- Static constants: -------------------------------------    
           public:

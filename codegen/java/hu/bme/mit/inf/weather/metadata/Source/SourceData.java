@@ -9,23 +9,21 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-package hu.bme.mit.inf.weather.metadata.Metadata;
+package hu.bme.mit.inf.weather.metadata.Source;
 
 import com.rti.dds.infrastructure.*;
 import com.rti.dds.infrastructure.Copyable;
 import java.io.Serializable;
 import com.rti.dds.cdr.CdrHelper;
 
-public class Metadata   implements Copyable, Serializable{
+public class SourceData   implements Copyable, Serializable{
 
-    public int timestamp= 0;
-    public hu.bme.mit.inf.weather.metadata.Location.LocationData location = (hu.bme.mit.inf.weather.metadata.Location.LocationData)hu.bme.mit.inf.weather.metadata.Location.LocationData.create();
-    public hu.bme.mit.inf.weather.metadata.Source.SourceData source = (hu.bme.mit.inf.weather.metadata.Source.SourceData)hu.bme.mit.inf.weather.metadata.Source.SourceData.create();
+    public String name=  "" ; /* maximum length = (60) */
 
-    public Metadata() {
+    public SourceData() {
 
     }
-    public Metadata (Metadata other) {
+    public SourceData (SourceData other) {
 
         this();
         copy_from(other);
@@ -33,8 +31,8 @@ public class Metadata   implements Copyable, Serializable{
 
     public static Object create() {
 
-        Metadata self;
-        self = new  Metadata();
+        SourceData self;
+        self = new  SourceData();
         self.clear();
         return self;
 
@@ -42,13 +40,7 @@ public class Metadata   implements Copyable, Serializable{
 
     public void clear() {
 
-        timestamp= 0;
-        if (location != null) {
-            location.clear();
-        }
-        if (source != null) {
-            source.clear();
-        }
+        name=  ""; 
     }
 
     public boolean equals(Object o) {
@@ -61,15 +53,9 @@ public class Metadata   implements Copyable, Serializable{
             return false;
         }
 
-        Metadata otherObj = (Metadata)o;
+        SourceData otherObj = (SourceData)o;
 
-        if(timestamp != otherObj.timestamp) {
-            return false;
-        }
-        if(!location.equals(otherObj.location)) {
-            return false;
-        }
-        if(!source.equals(otherObj.source)) {
+        if(!name.equals(otherObj.name)) {
             return false;
         }
 
@@ -78,16 +64,14 @@ public class Metadata   implements Copyable, Serializable{
 
     public int hashCode() {
         int __result = 0;
-        __result += (int)timestamp;
-        __result += location.hashCode(); 
-        __result += source.hashCode(); 
+        __result += name.hashCode(); 
         return __result;
     }
 
     /**
     * This is the implementation of the <code>Copyable</code> interface.
     * This method will perform a deep copy of <code>src</code>
-    * This method could be placed into <code>MetadataTypeSupport</code>
+    * This method could be placed into <code>SourceDataTypeSupport</code>
     * rather than here by using the <code>-noCopyable</code> option
     * to rtiddsgen.
     * 
@@ -100,12 +84,10 @@ public class Metadata   implements Copyable, Serializable{
     */
     public Object copy_from(Object src) {
 
-        Metadata typedSrc = (Metadata) src;
-        Metadata typedDst = this;
+        SourceData typedSrc = (SourceData) src;
+        SourceData typedDst = this;
 
-        typedDst.timestamp = typedSrc.timestamp;
-        typedDst.location = (hu.bme.mit.inf.weather.metadata.Location.LocationData) typedDst.location.copy_from(typedSrc.location);
-        typedDst.source = (hu.bme.mit.inf.weather.metadata.Source.SourceData) typedDst.source.copy_from(typedSrc.source);
+        typedDst.name = typedSrc.name;
 
         return this;
     }
@@ -123,9 +105,7 @@ public class Metadata   implements Copyable, Serializable{
         }
 
         CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("timestamp: ").append(timestamp).append("\n");  
-        strBuffer.append(location.toString("location ", indent+1));
-        strBuffer.append(source.toString("source ", indent+1));
+        strBuffer.append("name: ").append(name).append("\n");  
 
         return strBuffer.toString();
     }

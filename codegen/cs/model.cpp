@@ -20,6 +20,105 @@ using namespace DDS;
 
 namespace metadata {
 
+    namespace Source {
+
+        /* ========================================================================= */
+        SourceData::SourceData() {
+            name = "";
+        }
+
+        void SourceData::clear(){
+            name = "";
+        }
+
+        System::Boolean SourceData::copy_from(SourceData^ src) {
+
+            SourceData^ dst = this;
+
+            dst->name = src->name;
+            return true;
+        }
+
+        Boolean SourceData::Equals(Object^ other) {
+            if (other == nullptr) {
+                return false;
+            }        
+            if (this == other) {
+                return true;
+            }
+            SourceData^ otherObj =
+            dynamic_cast<SourceData^>(other);
+            if (otherObj == nullptr) {
+                return false;
+            }
+
+            if (!name->Equals(otherObj->name)) {
+                return false;
+            }
+            return true;
+        }
+
+        DDS::TypeCode^ SourceData::get_typecode() {
+            if (_typecode == nullptr) {
+                _typecode = gcnew DDS::TypeCode(SourceData_get_typecode());
+            }
+            return _typecode;
+        }
+
+        DDS_TypeCode* SourceData_get_typecode()
+        {
+            static RTIBool is_initialized = RTI_FALSE;
+
+            static DDS_TypeCode SourceData_g_tc_name_string = DDS_INITIALIZE_STRING_TYPECODE((60));
+            static DDS_TypeCode_Member SourceData_g_tc_members[1]=
+            {
+
+                {
+                    (char *)"name",/* Member name */
+                    {
+                        0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }
+            };
+
+            static DDS_TypeCode SourceData_g_tc =
+            {{
+                    DDS_TK_STRUCT,/* Kind */
+                    DDS_BOOLEAN_FALSE, /* Ignored */
+                    -1, /*Ignored*/
+                    (char *)"metadata::Source::SourceData", /* Name */
+                    NULL, /* Ignored */      
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    1, /* Number of members */
+                    SourceData_g_tc_members, /* Members */
+                    DDS_VM_NONE  /* Ignored */         
+                }}; /* Type code for SourceData*/
+
+            if (is_initialized) {
+                return &SourceData_g_tc;
+            }
+
+            SourceData_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&SourceData_g_tc_name_string;
+
+            is_initialized = RTI_TRUE;
+
+            return &SourceData_g_tc;
+        }
+    } /* namespace Source  */
+
     namespace Location {
 
         /* ========================================================================= */
@@ -175,12 +274,16 @@ namespace metadata {
         Metadata::Metadata() {
             timestamp = 0;
             location = gcnew metadata::Location::LocationData ();
+            source = gcnew metadata::Source::SourceData ();
         }
 
         void Metadata::clear(){
             timestamp = 0;
             if (location!= nullptr) {
                 location->clear();
+            }
+            if (source!= nullptr) {
+                source->clear();
             }
         }
 
@@ -190,6 +293,7 @@ namespace metadata {
 
             dst->timestamp = src->timestamp;
             dst->location->copy_from(src->location); 
+            dst->source->copy_from(src->source); 
             return true;
         }
 
@@ -212,6 +316,9 @@ namespace metadata {
             if (!location->Equals(otherObj->location)) {
                 return false;
             }
+            if (!source->Equals(otherObj->source)) {
+                return false;
+            }
             return true;
         }
 
@@ -226,7 +333,7 @@ namespace metadata {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member Metadata_g_tc_members[2]=
+            static DDS_TypeCode_Member Metadata_g_tc_members[3]=
             {
 
                 {
@@ -262,6 +369,23 @@ namespace metadata {
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
+                }, 
+                {
+                    (char *)"source",/* Member name */
+                    {
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
                 }
             };
 
@@ -275,7 +399,7 @@ namespace metadata {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    2, /* Number of members */
+                    3, /* Number of members */
                     Metadata_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for Metadata*/
@@ -287,6 +411,8 @@ namespace metadata {
             Metadata_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
             Metadata_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)metadata::Location::LocationData_get_typecode();
+
+            Metadata_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)metadata::Source::SourceData_get_typecode();
 
             is_initialized = RTI_TRUE;
 

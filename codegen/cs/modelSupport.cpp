@@ -18,6 +18,149 @@ using namespace System;
 using namespace DDS;
 
 namespace metadata {
+    namespace Source {
+
+        /* ========================================================================= */
+
+        // ---------------------------------------------------------------------------
+        // SourceDataDataWriter
+        // ---------------------------------------------------------------------------
+
+        SourceDataDataWriter::SourceDataDataWriter(
+            System::IntPtr impl) : DDS::TypedDataWriter<SourceData^>(impl) {
+            // empty
+        }
+
+        // ---------------------------------------------------------------------------
+        // SourceDataDataReader
+        // ---------------------------------------------------------------------------
+
+        SourceDataDataReader::SourceDataDataReader(
+            System::IntPtr impl) : DDS::TypedDataReader<SourceData^>(impl) {
+            // empty
+        }
+
+        // ---------------------------------------------------------------------------
+        // SourceDataTypeSupport
+        // ---------------------------------------------------------------------------
+
+        SourceDataTypeSupport::SourceDataTypeSupport()
+        : DDS::TypedTypeSupport<SourceData^>(
+            SourceDataPlugin::get_instance()) {
+
+            _type_plugin = SourceDataPlugin::get_instance();
+        }
+
+        void SourceDataTypeSupport::register_type(
+            DDS::DomainParticipant^ participant,
+            System::String^ type_name) {
+
+            get_instance()->register_type_untyped(participant, type_name);
+        }
+
+        void SourceDataTypeSupport::unregister_type(
+            DDS::DomainParticipant^ participant,
+            System::String^ type_name) {
+
+            get_instance()->unregister_type_untyped(participant, type_name);
+        }
+
+        SourceData^ SourceDataTypeSupport::create_data() {
+            return gcnew SourceData();
+        }
+
+        SourceData^ SourceDataTypeSupport::create_data_untyped() {
+            return create_data();
+        }
+
+        void SourceDataTypeSupport::delete_data(
+            SourceData^ a_data) {
+            /* If the generated type does not implement IDisposable (the default),
+            * the following will no a no-op.
+            */
+            delete a_data;
+        }
+
+        void SourceDataTypeSupport::print_data(SourceData^ a_data) {
+            get_instance()->_type_plugin->print_data(a_data, nullptr, 0);
+        }
+
+        void SourceDataTypeSupport::copy_data(
+            SourceData^ dst, SourceData^ src) {
+
+            get_instance()->copy_data_untyped(dst, src);
+        }
+
+        void SourceDataTypeSupport::serialize_data_to_cdr_buffer(
+            array<System::Byte>^ buffer,
+            System::UInt32% length,
+            SourceData^ a_data)
+        {
+            if (!get_instance()->_type_plugin->serialize_to_cdr_buffer(buffer,length,a_data)) {
+                throw gcnew Retcode_Error(DDS_RETCODE_ERROR);
+            }
+        }
+
+        void SourceDataTypeSupport::deserialize_data_from_cdr_buffer(
+            SourceData^ a_data,
+            array<System::Byte>^ buffer,
+            System::UInt32 length)
+        {
+            if (!get_instance()->_type_plugin->deserialize_from_cdr_buffer(a_data,buffer,length)) {
+                throw gcnew Retcode_Error(DDS_RETCODE_ERROR);
+            }
+        }
+
+        System::String^ SourceDataTypeSupport::data_to_string(
+            SourceData ^sample, 
+            PrintFormatProperty ^formatProperty)
+        {
+            return get_instance()->_type_plugin->data_to_string(
+                sample, 
+                formatProperty);
+        }
+
+        System::String^ SourceDataTypeSupport::data_to_string(
+            SourceData ^sample)
+        {
+            PrintFormatProperty ^formatProperty = gcnew PrintFormatProperty();
+            return get_instance()->_type_plugin->data_to_string(
+                sample, 
+                formatProperty);
+        }
+
+        DDS::TypeCode^ SourceDataTypeSupport::get_typecode() {
+            return  SourceData::get_typecode();
+        }
+
+        System::String^ SourceDataTypeSupport::get_type_name() {
+            return TYPENAME;
+        }
+
+        System::String^ SourceDataTypeSupport::get_type_name_untyped() {
+            return TYPENAME;
+        }
+
+        DDS::DataReader^ SourceDataTypeSupport::create_datareaderI(
+            System::IntPtr impl) {
+
+            return gcnew SourceDataDataReader(impl);
+        }
+
+        DDS::DataWriter^ SourceDataTypeSupport::create_datawriterI(
+            System::IntPtr impl) {
+
+            return gcnew SourceDataDataWriter(impl);
+        }
+
+        SourceDataTypeSupport^
+        SourceDataTypeSupport::get_instance() {
+            if (_singleton == nullptr) {
+                _singleton = gcnew SourceDataTypeSupport();
+            }
+            return _singleton;
+        }
+    } /* namespace Source  */
     namespace Location {
 
         /* ========================================================================= */
