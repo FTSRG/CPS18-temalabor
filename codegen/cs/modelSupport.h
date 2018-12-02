@@ -15,6 +15,143 @@ class DDSDataWriter;
 class DDSDataReader;
 
 namespace metadata {
+    namespace Source {
+        // ---------------------------------------------------------------------------
+        // SourceDataTypeSupport
+        // ---------------------------------------------------------------------------
+
+        ref class SourceDataPlugin;
+
+        /* A collection of useful methods for dealing with objects of type
+        * SourceData.
+        */
+        public ref class SourceDataTypeSupport
+        : public DDS::TypedTypeSupport<SourceData^> {
+            // --- Type name: --------------------------------------------------------
+          public:
+            static System::String^ TYPENAME = "metadata::Source::SourceData";
+
+            // --- Public Methods: ---------------------------------------------------
+          public:
+            /* Get the default name of this type.
+            *
+            * An application can choose to register a type under any name, so
+            * calling this method is strictly optional.
+            */
+            static System::String^ get_type_name();
+
+            /* Register this type with the given participant under the given logical
+            * name. This type must be registered before a Topic can be created that
+            * uses it.
+            */
+            static void register_type(
+                DDS::DomainParticipant^ participant,
+                System::String^ type_name);
+
+            /* Unregister this type from the given participant, where it was
+            * previously registered under the given name. No further Topic creation
+            * using this type will be possible.
+            *
+            * Unregistration allows some middleware resources to be reclaimed.
+            */
+            static void unregister_type(
+                DDS::DomainParticipant^ participant,
+                System::String^ type_name);
+
+            /* Create an instance of the SourceData type.
+            */
+            static SourceData^ create_data();
+
+            /* If instances of the SourceData type require any
+            * explicit finalization, perform it now on the given sample.
+            */
+            static void delete_data(SourceData^ data);
+
+            /* Write the contents of the data sample to standard out.
+            */
+            static void print_data(SourceData^ a_data);
+
+            /* Perform a deep copy of the contents of one data sample over those of
+            * another, overwriting it.
+            */
+            static void copy_data(
+                SourceData^ dst_data,
+                SourceData^ src_data);
+
+            static void serialize_data_to_cdr_buffer(
+                array<System::Byte>^ buffer,
+                System::UInt32% length,
+                SourceData^ a_data);
+
+            static void deserialize_data_from_cdr_buffer(
+                SourceData^ a_data,
+                array<System::Byte>^ buffer,
+                System::UInt32 length);
+
+            static System::String^ data_to_string(
+                SourceData ^sample,
+                PrintFormatProperty ^property);
+
+            static System::String^ data_to_string(
+                SourceData ^sample);
+
+            static DDS::TypeCode^ get_typecode();
+
+            // --- Implementation: ---------------------------------------------------
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+          public:
+            virtual System::String^ get_type_name_untyped() override;
+            virtual DDS::DataReader^ create_datareaderI(
+                System::IntPtr impl) override;
+            virtual DDS::DataWriter^ create_datawriterI(
+                System::IntPtr impl) override;
+
+            virtual SourceData^ create_data_untyped() override;
+
+          public:
+            static SourceDataTypeSupport^ get_instance();
+
+            SourceDataTypeSupport();
+
+          private:
+            static SourceDataTypeSupport^ _singleton;
+            SourceDataPlugin^ _type_plugin;
+        };
+
+        // ---------------------------------------------------------------------------
+        // SourceDataDataReader
+        // ---------------------------------------------------------------------------
+
+        /**
+        * A reader for the SourceData type.
+        */
+        public ref class SourceDataDataReader :
+        public DDS::TypedDataReader<SourceData^> {
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+            internal:
+            SourceDataDataReader(System::IntPtr impl);
+        };
+
+        // ---------------------------------------------------------------------------
+        // SourceDataDataWriter
+        // ---------------------------------------------------------------------------
+
+        /**
+        * A writer for the SourceData user type.
+        */
+        public ref class SourceDataDataWriter :
+        public DDS::TypedDataWriter<SourceData^> {
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+            internal:
+            SourceDataDataWriter(System::IntPtr impl);
+        };
+    } /* namespace Source  */
     namespace Location {
         // ---------------------------------------------------------------------------
         // LocationDataTypeSupport
