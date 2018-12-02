@@ -18,7 +18,7 @@ import com.rti.dds.cdr.CdrHelper;
 
 public class Metadata   implements Copyable, Serializable{
 
-    public int timestamp= 0;
+    public long timestamp= 0;
     public hu.bme.mit.inf.weather.metadata.Location.LocationData location = (hu.bme.mit.inf.weather.metadata.Location.LocationData)hu.bme.mit.inf.weather.metadata.Location.LocationData.create();
     public hu.bme.mit.inf.weather.metadata.Source.SourceData source = (hu.bme.mit.inf.weather.metadata.Source.SourceData)hu.bme.mit.inf.weather.metadata.Source.SourceData.create();
 
