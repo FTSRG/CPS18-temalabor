@@ -1,0 +1,12 @@
+﻿ : 
+LHBC:Bekescsaba
+LHBP:Budapest
+LHKE:Kecskemet
+LHPA:Papa
+LHPP:Pecs-Pogany
+LHPR:Gyor-Per
+LHSM:Sarmellek
+LHSN:Szolnok
+LHUD:Szeged
+LHTA:Taszar
+LHDC:Debrecen
