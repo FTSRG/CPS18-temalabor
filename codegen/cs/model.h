@@ -470,3 +470,65 @@ namespace weather {
 
 } /* namespace weather  */
 
+namespace airport {
+
+    namespace flights {
+
+        public ref struct FlightsData
+        :  public DDS::ICopyable<FlightsData^> {
+            // --- Declared members: -------------------------------------------------
+          public: 
+
+            metadata::Metadata::Metadata^ metadata;
+            System::Int32 id;
+            System::String^ originAirport;
+            System::String^ destinationAirport;
+            System::Int32 weatherDelay;
+
+            // --- Static constants: -------------------------------------    
+          public:
+
+            // --- Constructors and destructors: -------------------------------------
+          public:
+            FlightsData();
+
+            // --- Utility methods: --------------------------------------------------
+          public:
+
+            virtual void clear() ;
+
+            virtual System::Boolean copy_from(FlightsData^ src);
+
+            virtual System::Boolean Equals(System::Object^ other) override;
+            static DDS::TypeCode^ get_typecode();
+
+          private:
+            static DDS::TypeCode^ _typecode;
+
+        }; // class FlightsData
+
+        public ref class FlightsDataSeq sealed
+        : public DDS::UserRefSequence<FlightsData^> {
+          public:
+            FlightsDataSeq() :
+                DDS::UserRefSequence<FlightsData^>() {
+                    // empty
+            }
+            FlightsDataSeq(System::Int32 max) :
+                DDS::UserRefSequence<FlightsData^>(max) {
+                    // empty
+            }
+            FlightsDataSeq(FlightsDataSeq^ src) :
+                DDS::UserRefSequence<FlightsData^>(src) {
+                    // empty
+            }
+        };
+
+        #define NDDSUSERDllExport
+
+        NDDSUSERDllExport DDS_TypeCode* FlightsData_get_typecode();
+
+    } /* namespace flights  */
+
+} /* namespace airport  */
+

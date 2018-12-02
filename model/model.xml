@@ -60,6 +60,17 @@
 				</struct>
 			</module>
 		</module>
+		<module name="airport">
+			<module name="flights">
+				<struct name="FlightsData">
+					<member name="metadata" type="nonBasic" nonBasicTypeName="metadata::Metadata::Metadata"/>
+					<member name="id" type="long"/>
+					<member name="originAirport" type="string" stringMaxLength="5"/>
+					<member name="destinationAirport" type="string" stringMaxLength="5"/>
+					<member name="weatherDelay" type="long"/>
+				</struct>
+			</module>
+		</module>
 	</types>
 	
 	<!-- QoS profiles-->
@@ -73,9 +84,11 @@
 			<register_type kind="dynamicData" name="minimalWeather" type_ref="weather::MinimalWeather::MinimalWeatherData"/>
 			<register_type kind="dynamicData" name="forecastInputWeather" type_ref="weather::ForecastInputWeather::ForecastInputWeatherData"/>
 			<register_type kind="dynamicData" name="airportWeather" type_ref="weather::AirportWeather::AirportWeatherData"/>
+			<register_type kind="dynamicData" name="flightsData" type_ref="airport::flights::FlightsData"/>
 			<topic name="MinimalWeather" register_type_ref="minimalWeather"/>
 			<topic name="ForecastInputWeather" register_type_ref="forecastInputWeather"/>
 			<topic name="AirportWeather" register_type_ref="airportWeather"/>
+			<topic name="FlightsData" register_type_ref="flightsData"/>
       </domain>
     </domain_library>
 
