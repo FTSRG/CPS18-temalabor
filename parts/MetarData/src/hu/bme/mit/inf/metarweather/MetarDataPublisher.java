@@ -1,5 +1,6 @@
 package hu.bme.mit.inf.metarweather;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -166,7 +167,7 @@ public class MetarDataPublisher {
                     iter++;
                 }
 
-                //set temperature and dewpoint
+                //get temperature and dewpoint
                 if(dataLine[iter].equals("MIBCFZFG")){ iter++; }
                 
                 if(dataLine[iter].contains("///")){
@@ -182,6 +183,10 @@ public class MetarDataPublisher {
                 }
                 
                 if(dataLine[iter].contains("BR")){
+                    iter++;
+                }
+                
+                if(dataLine[iter].contains("HZ")){
                     iter++;
                 }
                 
@@ -278,7 +283,10 @@ public class MetarDataPublisher {
     // -----------------------------------------------------------------------
 
     // --- Constructors: -----------------------------------------------------
-
+/*
+    private MetarPublisher() {
+        super();
+    }*/
 
     // -----------------------------------------------------------------------
 
@@ -368,12 +376,7 @@ public class MetarDataPublisher {
 	            written multiple times, initialize the key here
 	            and register the keyed instance prior to writing */
 	            //instance_handle = writer.register_instance(instance);
-	            
-	            
-	            
-	                	   
-	            
-	                       
+
 	                  
 	            getMetar();
 	            try {
@@ -403,13 +406,9 @@ public class MetarDataPublisher {
 	                instance.DewPoint = metars.get(count).DewPoint;
 	                instance.Pressure = metars.get(count).Pressure;
 	                
-	                /*
+	                
 	                MetarInfluxConnector connection = new MetarInfluxConnector();
-	                try {
-						connection.addData(metars.get(count));
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}*/
+	                connection.addData(metars.get(count));
 					
 	
 	                /* Write data */
