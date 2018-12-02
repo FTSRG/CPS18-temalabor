@@ -14,7 +14,7 @@
 	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtiroutingserviced.jar"/>
 	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtirsadapter.jar"/>
 	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtirsadapterd.jar"/>
-	<classpathentry kind="lib" path="C:/CPS/bin/java/model.jar"/>
 	<classpathentry kind="lib" path="C:/CPS/dependencies/JSoup/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/bin/java/model.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
