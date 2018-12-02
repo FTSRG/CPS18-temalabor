@@ -6,64 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37fa3b45-4d1f-46e1-a041-d83c98233f98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/piddsnew16_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/pidds2_jar/pidds2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/pidds2_jar/piddspub22.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/pidds_jar/piddsSUB.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DHT22.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DHT22.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metadata/Metadata/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metadata/Metadata/Metadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metadata/Metadata/MetadataTypeCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metadata/Metadata/MetadataTypeCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metadata/Metadata/MetadataTypeSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metadata/Metadata/MetadataTypeSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherDataTypeCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherDataTypeCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherDataTypeSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherDataTypeSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DHT22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DHT22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Data.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataTypeSupport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationTypeDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationTypeDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationTypeSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationTypeTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LocationTypeTypeSupport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaTypeDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaTypeDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaTypeSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaTypeTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SensorMetaTypeTypeSupport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Temperature.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureInfluxConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperaturePublisher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureSubscriber$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureSubscriber$TemperatureListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureSubscriber.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TemperatureTypeSupport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Weather.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocationDataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocationDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocationSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocationTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherLocationTypeSupport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherSeq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherTypeCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WeatherTypeSupport.class" beforeDir="false" />
-    </list>
+    <list default="true" id="37fa3b45-4d1f-46e1-a041-d83c98233f98" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -191,7 +134,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="width" value="1625" />
     <option name="height" value="1744" />
@@ -273,7 +216,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543766906303" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543769011796" />
     <property name="last_opened_file_path" value="C:/Program Files/rti_connext_dds-5.3.1/lib/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -308,15 +251,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543757777067</updated>
-      <workItem from="1543757779883" duration="7881000" />
+      <workItem from="1543757779883" duration="8477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7881000" />
+    <option name="totallyTimeSpent" value="8477000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1435" height="782" extended-state="7" />
+    <frame x="-6" y="-6" width="1435" height="782" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
