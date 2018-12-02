@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dds version="5.2.0" xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.0/rti_dds_profiles.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<types xsi:noNamespaceSchemaLocation="file:///C:/Program Files/rti_connext_dds-5.3.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+		<module name="metadata">
+			<module name="Location">
+				<struct name="LocationData">
+					<member name="name" type="string" stringMaxLength="60"/>
+					<member name="latitude" type="double"/>
+					<member name="longitude" type="double"/>
+				</struct>
+			</module>
+			<module name="Metadata">
+				<struct name="Metadata">
+					<member name="timestamp" type="long"/>
+					<member name="location" type="nonBasic" nonBasicTypeName="metadata::Location::LocationData"/>
+				</struct>
+			</module>
+		</module>
+		<module name="weather">
+			<module name="MinimalWeather">
+				<struct name="MinimalWeatherData">
+					<member name="Temerature" type="double"/>
+					<member name="Humidity" type="double"/>
+					<member name="metadata" type="nonBasic" nonBasicTypeName="metadata::Metadata"/>
+				</struct>
+			</module>
+			<module name="ExtendedWeather">
+				<struct name="ExtendedWeatherData" baseType="weather::MinimalWeather::MinimalWeatherData">
+					<member name="Pressure" type="double"/>
+					<member name="WindDirection" type="double"/>
+					<member name="WindSpeed" type="double"/>
+				</struct>
+			</module>
+			<module name="Cloud">
+				<struct name="CloudData">
+					<member name="Value" type="short"/>
+					<member name="description" type="string" stringMaxLength="25"/>
+				</struct>
+			</module>
+			<module name="ForecastInputWeather">
+				<struct name="ForecastInputWeatherData" baseType="weather::ExtendedWeather::ExtendedWeatherData">
+					<member name="SeaLevelPressure" type="double"/>
+					<member name="Phenomena" type="string" stringMaxLength="80"/>
+					<member name="cloud" type="nonBasic" nonBasicTypeName="weather::Cloud::CloudData"/>
+				</struct>
+			</module>
+			<module name="AirportWeather">
+				<struct name="AirportWeatherData" baseType="weather::ExtendedWeather::ExtendedWeatherData">
+					<member name="WindGust" type="double"/>
+					<member name="WindDirChange" type="double"/>
+					<member name="WindDirChange1" type="double"/>
+					<member name="DewPoint" type="double"/>
+					<member name="ViewDistance" type="double"/>
+				</struct>
+			</module>
+		</module>
+	</types>
+	
+	<!-- QoS profiles-->
+	<qos_library name="DefaultQoSLibrary">
+		<qos_profile name="DefaultQosProfile1" is_default_qos="true">
+		</qos_profile>
+    </qos_library>
+
+    <domain_library name="MainDomainLibrary">
+		<domain name="MainDomain" domain_id="1">
+			<register_type kind="dynamicData" name="minimalWeather" type_ref="weather::MinimalWeather::MinimalWeatherData"/>
+			<register_type kind="dynamicData" name="forecastInputWeather" type_ref="weather::ForecastInputWeather::ForecastInputWeatherData"/>
+			<register_type kind="dynamicData" name="airportWeather" type_ref="weather::AirportWeather::AirportWeatherData"/>
+			<topic name="MinimalWeather" register_type_ref="minimalWeather"/>
+			<topic name="ForecastInputWeather" register_type_ref="forecastInputWeather"/>
+			<topic name="AirportWeather" register_type_ref="airportWeather"/>
+      </domain>
+    </domain_library>
+
+    <participant_library name="MainParticipantLibrary">
+		<domain_participant name="minimalWeather" domain_ref="MainDomainLibrary::MainDomain">
+			<publisher name="publisher">
+			</publisher>
+		</domain_participant>
+		<domain_participant name="TemperaturePublisher" domain_ref="MainDomainLibrary::Main">
+			<publisher name="TemperaturePublisher">
+				<!--Data writers-->
+				<data_writer name="temperatureWriter" topic_ref="temperatureTopic">
+					<datawriter_qos name="writerQoS" base_name="MainQoSLibrary::MainQoSProfile">
+					</datawriter_qos>
+				</data_writer>
+				<!--Publisher QoS settings-->
+			</publisher>
+		</domain_participant>
+		<domain_participant name="TemperatureStreamProcessor" domain_ref="MainDomainLibrary::Main">
+			<publisher name="TemperaturePublisher">
+				<!--Data writers-->
+				<data_writer name="temperatureWriter" topic_ref="temperatureTopic">
+					<datawriter_qos name="writerQoS" base_name="MainQoSLibrary::MainQoSProfile">
+					</datawriter_qos>
+				</data_writer>
+				<!--Publisher QoS settings-->
+			</publisher>
+			<subscriber name="TemperatureSubscriber">
+				<!--Data readers-->
+				<data_reader name="temperatureReader" topic_ref="temperatureTopic">
+					<datareader_qos name="readerQoS" base_name="MainQoSLibrary::MainQoSProfile">
+					</datareader_qos>
+				</data_reader>
+				<!--SubscriberQoS settings-->
+			</subscriber>
+		</domain_participant>
+		<domain_participant name="TemperatureLogger" domain_ref="MainDomainLibrary::Main">
+			<subscriber name="TemperatureSubscriber">
+				<!--Data readers-->
+				<data_reader name="temperatureReader" topic_ref="temperatureTopic">
+					<datareader_qos name="readerQoS" base_name="MainQoSLibrary::MainQoSProfile">
+					</datareader_qos>
+				</data_reader>
+				<!--SubscriberQoS settings-->
+			</subscriber>
+		</domain_participant>
+    </participant_library>
+</dds>
