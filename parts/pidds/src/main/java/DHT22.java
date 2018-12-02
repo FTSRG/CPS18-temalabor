@@ -7,16 +7,24 @@ import java.util.concurrent.TimeoutException;
 public class DHT22 {
     private static ProcessExecutor pe= new ProcessExecutor();
 
-    public double getTemp() throws InterruptedException, TimeoutException, IOException {
+    private double temp;
+    private double hum;
+
+    public void getData() throws InterruptedException, TimeoutException, IOException {
         String output = pe.command("./readDHT22fromGPIO16.py")
                 .readOutput(true).execute()
                 .outputUTF8();
         System.out.println(output);
         StringTokenizer stringTokenizer = new StringTokenizer(output,";");
-        double temp= Double.valueOf(stringTokenizer.nextToken());
-        double hum= Double.valueOf(stringTokenizer.nextToken());
+        temp= Double.valueOf(stringTokenizer.nextToken());
+        hum= Double.valueOf(stringTokenizer.nextToken());
+    }
 
+    public double getTemp() {
         return temp;
     }
 
+    public double getHum() {
+        return hum;
+    }
 }
