@@ -1,4 +1,4 @@
-package hu.bme.mit.inf.metarweather;
+package hu.bme.mit.inf.weather.predictor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +23,13 @@ import hu.bme.mit.inf.weather.weather.AirportWeather.AirportWeatherDataDataReade
 import hu.bme.mit.inf.weather.weather.AirportWeather.AirportWeatherDataSeq;
 import hu.bme.mit.inf.weather.weather.AirportWeather.AirportWeatherDataTypeSupport;
 
-public class MetarDataSubscriber {
+public class MetarSubscriber {
     // -----------------------------------------------------------------------
     // Public Methods
     // -----------------------------------------------------------------------
 	
 	public static AirportWeatherData metar = new AirportWeatherData();
-
+	static MetarInfluxConnector connection = new MetarInfluxConnector();
     public static void main(String[] args) {
         // --- Get domain ID --- //
         int domainId = 0;
@@ -176,7 +176,7 @@ public class MetarDataSubscriber {
 
     // =======================================================================
 
-    private static class MetarListener extends DataReaderAdapter {
+    private static class MetarListener<MetarInfluxConnector> extends DataReaderAdapter {
 
         AirportWeatherDataSeq _dataSeq = new AirportWeatherDataSeq();
         SampleInfoSeq _infoSeq = new SampleInfoSeq();
@@ -206,6 +206,9 @@ public class MetarDataSubscriber {
                     metar.WindSpeed = _dataSeq.get(i).WindSpeed;
                     metar.metadata.location.name = _dataSeq.get(i).metadata.location.name;
                     metar.metadata.timestamp = _dataSeq.get(i).metadata.timestamp;
+                    
+                    
+                    connection.addData(metar);
 
                     if (info.valid_data) {
                         System.out.println(
