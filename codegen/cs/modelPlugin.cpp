@@ -1022,7 +1022,7 @@ namespace metadata {
 
             if (serialize_sample) {
 
-                if (!stream.serialize_long(sample->timestamp )) {
+                if (!stream.serialize_long_long(sample->timestamp )) {
                     return false;
                 }
                 if (!metadata::Location::LocationDataPlugin::get_instance()->serialize(
@@ -1081,7 +1081,7 @@ namespace metadata {
 
                 try{
 
-                    sample->timestamp = stream.deserialize_long();
+                    sample->timestamp = stream.deserialize_long_long();
                     if (!metadata::Location::LocationDataPlugin::get_instance()->deserialize_sample(
                         endpoint_data,
                         sample->location,
@@ -1136,7 +1136,7 @@ namespace metadata {
             }
 
             if (skip_sample) {
-                if (!stream.skip_long()) {
+                if (!stream.skip_long_long()) {
                     return false;
                 }
                 if (!metadata::Location::LocationDataPlugin::get_instance()->skip(
@@ -1191,7 +1191,7 @@ namespace metadata {
 
             }
 
-            current_alignment +=CdrSizes::LONG->serialized_size(
+            current_alignment +=CdrSizes::LONG_LONG->serialized_size(
                 current_alignment );
 
             current_alignment +=  metadata::Location::LocationDataPlugin::get_instance()->get_serialized_sample_max_size(
@@ -1231,7 +1231,7 @@ namespace metadata {
 
             }
 
-            current_alignment +=CdrSizes::LONG->serialized_size(
+            current_alignment +=CdrSizes::LONG_LONG->serialized_size(
                 current_alignment);
             current_alignment +=  metadata::Location::LocationDataPlugin::get_instance()->get_serialized_sample_min_size(
                 endpoint_data, false, encapsulation_id, current_alignment);
@@ -1272,7 +1272,7 @@ namespace metadata {
                 endpoint_data->set_base_alignment(current_alignment);  
             }
 
-            current_alignment += CdrSizes::LONG->serialized_size(
+            current_alignment += CdrSizes::LONG_LONG->serialized_size(
                 endpoint_data->get_alignment(current_alignment));
 
             current_alignment += metadata::Location::LocationDataPlugin::get_instance()->get_serialized_sample_size(
@@ -1507,7 +1507,7 @@ namespace weather {
             }
 
             DataPrintUtility::print_object(
-                sample->Temerature, "Temerature", indent_level);
+                sample->Temperature, "Temperature", indent_level);
 
             DataPrintUtility::print_object(
                 sample->Humidity, "Humidity", indent_level);
@@ -1546,7 +1546,7 @@ namespace weather {
 
             if (serialize_sample) {
 
-                if (!stream.serialize_double(sample->Temerature )) {
+                if (!stream.serialize_double(sample->Temperature )) {
                     return false;
                 }
                 if (!stream.serialize_double(sample->Humidity )) {
@@ -1598,7 +1598,7 @@ namespace weather {
 
                 try{
 
-                    sample->Temerature = stream.deserialize_double();
+                    sample->Temperature = stream.deserialize_double();
                     sample->Humidity = stream.deserialize_double();
                     if (!metadata::MetadataPlugin::get_instance()->deserialize_sample(
                         endpoint_data,

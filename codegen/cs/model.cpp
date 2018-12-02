@@ -408,7 +408,7 @@ namespace metadata {
                 return &Metadata_g_tc;
             }
 
-            Metadata_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            Metadata_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
             Metadata_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)metadata::Location::LocationData_get_typecode();
 
@@ -428,13 +428,13 @@ namespace weather {
 
         /* ========================================================================= */
         MinimalWeatherData::MinimalWeatherData() {
-            Temerature = 0;
+            Temperature = 0;
             Humidity = 0;
             metadata = gcnew metadata::Metadata ();
         }
 
         void MinimalWeatherData::clear(){
-            Temerature = 0;
+            Temperature = 0;
             Humidity = 0;
             if (metadata!= nullptr) {
                 metadata->clear();
@@ -445,7 +445,7 @@ namespace weather {
 
             MinimalWeatherData^ dst = this;
 
-            dst->Temerature = src->Temerature;
+            dst->Temperature = src->Temperature;
             dst->Humidity = src->Humidity;
             dst->metadata->copy_from(src->metadata); 
             return true;
@@ -464,7 +464,7 @@ namespace weather {
                 return false;
             }
 
-            if (Temerature != otherObj->Temerature) {
+            if (Temperature != otherObj->Temperature) {
                 return false;
             }
             if (Humidity != otherObj->Humidity) {
@@ -491,7 +491,7 @@ namespace weather {
             {
 
                 {
-                    (char *)"Temerature",/* Member name */
+                    (char *)"Temperature",/* Member name */
                     {
                         0,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
