@@ -26,10 +26,6 @@ import com.rti.dds.topic.KeyHash_t;
 import com.rti.dds.topic.TypeSupportImpl;
 import com.rti.dds.topic.TypeSupportType;
 import com.rti.dds.util.Sequence;
-
-import hu.bme.mit.inf.weather.metadata.Metadata.Metadata;
-import hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeSupport;
-
 import com.rti.dds.topic.DefaultEndpointData;
 import com.rti.dds.topic.SampleAssignabilityProperty;
 import com.rti.dds.infrastructure.RETCODE_ERROR;
@@ -156,7 +152,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         currentAlignment += CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
         currentAlignment += CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment += MetadataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment +=hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
         }
@@ -182,7 +178,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         currentAlignment +=CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
         currentAlignment +=CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(currentAlignment) ;
-        currentAlignment += MetadataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
+        currentAlignment += hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
 
         if (include_encapsulation) {
             currentAlignment += encapsulation_size;
@@ -219,7 +215,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
         currentAlignment  +=  CdrPrimitiveType.DOUBLE.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
 
-        currentAlignment += MetadataTypeSupport.get_instance().get_serialized_sample_size(
+        currentAlignment += hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().get_serialized_sample_size(
             endpoint_data,false,encapsulation_id,currentAlignment,typedSrc.metadata);
 
         if (include_encapsulation) {
@@ -277,7 +273,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
             dst.writeDouble(typedSrc.Humidity);
 
-            MetadataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.metadata, dst, false, encapsulation_id,true,endpoint_plugin_qos);
+            hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.metadata, dst, false, encapsulation_id,true,endpoint_plugin_qos);
         }
 
         if (serialize_encapsulation) {
@@ -344,7 +340,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
             try{
                 typedDst.Temperature = src.readDouble();
                 typedDst.Humidity = src.readDouble();
-                typedDst.metadata = (Metadata) MetadataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.metadata, src, false, true, endpoint_plugin_qos);     
+                typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.metadata, src, false, true, endpoint_plugin_qos);     
             } catch (IllegalCdrStateException stateEx) {
                 if (src.available() >= CdrEncapsulation.CDR_ENCAPSULATION_PARAMETER_ID_ALIGNMENT) {
                     throw new RETCODE_ERROR("Error deserializing sample! Remainder: " + src.available() + "\n" +
@@ -433,7 +429,7 @@ public class MinimalWeatherDataTypeSupport extends TypeSupportImpl {
 
             src.skipDouble();
 
-            MetadataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
+            hu.bme.mit.inf.weather.metadata.MetadataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
 
         }
 

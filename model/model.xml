@@ -17,6 +17,7 @@
 			<module name="Metadata">
 				<struct name="Metadata">
 					<member name="timestamp" type="longLong"/>
+					<member name="isValid" type="boolean"/>
 					<member name="location" type="nonBasic" nonBasicTypeName="metadata::Location::LocationData"/>
 					<member name="source" type="nonBasic" nonBasicTypeName="metadata::Source::SourceData"/>
 				</struct>
