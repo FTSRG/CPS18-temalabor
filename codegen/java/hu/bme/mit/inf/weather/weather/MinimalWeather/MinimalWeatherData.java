@@ -13,14 +13,18 @@ package hu.bme.mit.inf.weather.weather.MinimalWeather;
 
 import com.rti.dds.infrastructure.*;
 import com.rti.dds.infrastructure.Copyable;
+
+import hu.bme.mit.inf.weather.metadata.Metadata.Metadata;
+
 import java.io.Serializable;
 import com.rti.dds.cdr.CdrHelper;
 
 public class MinimalWeatherData   implements Copyable, Serializable{
 
-    public double Temerature= 0;
+    public double Temperature= 0;
     public double Humidity= 0;
-    public hu.bme.mit.inf.weather.metadata.Metadata metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.create();
+    public 
+Metadata metadata = (Metadata)Metadata.create();
 
     public MinimalWeatherData() {
 
@@ -42,7 +46,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public void clear() {
 
-        Temerature= 0;
+        Temperature= 0;
         Humidity= 0;
         if (metadata != null) {
             metadata.clear();
@@ -61,7 +65,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
         MinimalWeatherData otherObj = (MinimalWeatherData)o;
 
-        if(Temerature != otherObj.Temerature) {
+        if(Temperature != otherObj.Temperature) {
             return false;
         }
         if(Humidity != otherObj.Humidity) {
@@ -76,7 +80,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public int hashCode() {
         int __result = 0;
-        __result += (int)Temerature;
+        __result += (int)Temperature;
         __result += (int)Humidity;
         __result += metadata.hashCode(); 
         return __result;
@@ -101,9 +105,9 @@ public class MinimalWeatherData   implements Copyable, Serializable{
         MinimalWeatherData typedSrc = (MinimalWeatherData) src;
         MinimalWeatherData typedDst = this;
 
-        typedDst.Temerature = typedSrc.Temerature;
+        typedDst.Temperature = typedSrc.Temperature;
         typedDst.Humidity = typedSrc.Humidity;
-        typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
+        typedDst.metadata = (Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
 
         return this;
     }
@@ -121,7 +125,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
         }
 
         CdrHelper.printIndent(strBuffer, indent+1);        
-        strBuffer.append("Temerature: ").append(Temerature).append("\n");  
+        strBuffer.append("Temperature: ").append(Temperature).append("\n");  
         CdrHelper.printIndent(strBuffer, indent+1);        
         strBuffer.append("Humidity: ").append(Humidity).append("\n");  
         strBuffer.append(metadata.toString("metadata ", indent+1));

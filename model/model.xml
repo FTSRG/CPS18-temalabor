@@ -16,7 +16,7 @@
 			</module>
 			<module name="Metadata">
 				<struct name="Metadata">
-					<member name="timestamp" type="long"/>
+					<member name="timestamp" type="longLong"/>
 					<member name="location" type="nonBasic" nonBasicTypeName="metadata::Location::LocationData"/>
 					<member name="source" type="nonBasic" nonBasicTypeName="metadata::Source::SourceData"/>
 				</struct>
@@ -25,7 +25,7 @@
 		<module name="weather">
 			<module name="MinimalWeather">
 				<struct name="MinimalWeatherData">
-					<member name="Temerature" type="double"/>
+					<member name="Temperature" type="double"/>
 					<member name="Humidity" type="double"/>
 					<member name="metadata" type="nonBasic" nonBasicTypeName="metadata::Metadata"/>
 				</struct>
@@ -132,7 +132,7 @@
 					<datareader_qos name="readerQoS" base_name="MainQoSLibrary::MainQoSProfile">
 					</datareader_qos>
 				</data_reader>
-				<!--SubscriberQoS settings-->
+				<!--SubscriberQoS settings -->
 			</subscriber>
 		</domain_participant>
     </participant_library>

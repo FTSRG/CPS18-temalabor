@@ -134,7 +134,7 @@ namespace metadata {
             // --- Declared members: -------------------------------------------------
           public: 
 
-            System::Int32 timestamp;
+            System::Int64 timestamp;
             metadata::Location::LocationData^ location;
             metadata::Source::SourceData^ source;
 
@@ -194,7 +194,7 @@ namespace weather {
             // --- Declared members: -------------------------------------------------
           public: 
 
-            System::Double Temerature;
+            System::Double Temperature;
             System::Double Humidity;
             metadata::Metadata^ metadata;
 
