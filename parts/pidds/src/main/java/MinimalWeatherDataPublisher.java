@@ -222,9 +222,14 @@ public class MinimalWeatherDataPublisher {
                 dht22.getData();
                 instance.Humidity = dht22.getHum();
                 instance.Temperature = dht22.getTemp();
+<<<<<<< HEAD
                 instance.metadata.source.name = "MoDeS3_Sensor_Weather_Station2";
                 instance.metadata.timestamp= System.currentTimeMillis();
                 instance.metadata.isValid = false;
+=======
+                instance.metadata.source.name = "MoDeS3_Sensor_Weather_Station";
+                instance.metadata.timestamp= System.currentTimeMillis();
+>>>>>>> origin/SensorDataCollection
 
 
 

@@ -19,7 +19,10 @@ import com.rti.dds.cdr.CdrHelper;
 public class Metadata   implements Copyable, Serializable{
 
     public long timestamp= 0;
+<<<<<<< HEAD
     public boolean isValid= false;
+=======
+>>>>>>> origin/SensorDataCollection
     public metadata.Location.LocationData location = (metadata.Location.LocationData)metadata.Location.LocationData.create();
     public metadata.Source.SourceData source = (metadata.Source.SourceData)metadata.Source.SourceData.create();
 
@@ -44,7 +47,10 @@ public class Metadata   implements Copyable, Serializable{
     public void clear() {
 
         timestamp= 0;
+<<<<<<< HEAD
         isValid= false;
+=======
+>>>>>>> origin/SensorDataCollection
         if (location != null) {
             location.clear();
         }
@@ -68,9 +74,12 @@ public class Metadata   implements Copyable, Serializable{
         if(timestamp != otherObj.timestamp) {
             return false;
         }
+<<<<<<< HEAD
         if(isValid != otherObj.isValid) {
             return false;
         }
+=======
+>>>>>>> origin/SensorDataCollection
         if(!location.equals(otherObj.location)) {
             return false;
         }
@@ -84,7 +93,10 @@ public class Metadata   implements Copyable, Serializable{
     public int hashCode() {
         int __result = 0;
         __result += (int)timestamp;
+<<<<<<< HEAD
         __result += (isValid == true)?1:0;
+=======
+>>>>>>> origin/SensorDataCollection
         __result += location.hashCode(); 
         __result += source.hashCode(); 
         return __result;
@@ -110,7 +122,10 @@ public class Metadata   implements Copyable, Serializable{
         Metadata typedDst = this;
 
         typedDst.timestamp = typedSrc.timestamp;
+<<<<<<< HEAD
         typedDst.isValid = typedSrc.isValid;
+=======
+>>>>>>> origin/SensorDataCollection
         typedDst.location = (metadata.Location.LocationData) typedDst.location.copy_from(typedSrc.location);
         typedDst.source = (metadata.Source.SourceData) typedDst.source.copy_from(typedSrc.source);
 
@@ -131,8 +146,11 @@ public class Metadata   implements Copyable, Serializable{
 
         CdrHelper.printIndent(strBuffer, indent+1);        
         strBuffer.append("timestamp: ").append(timestamp).append("\n");  
+<<<<<<< HEAD
         CdrHelper.printIndent(strBuffer, indent+1);        
         strBuffer.append("isValid: ").append(isValid).append("\n");  
+=======
+>>>>>>> origin/SensorDataCollection
         strBuffer.append(location.toString("location ", indent+1));
         strBuffer.append(source.toString("source ", indent+1));
 

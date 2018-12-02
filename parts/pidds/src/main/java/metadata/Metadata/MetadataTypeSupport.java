@@ -151,7 +151,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
         } 
 
         currentAlignment += CdrPrimitiveType.LONG.getMaxSizeSerialized(currentAlignment) ;
+<<<<<<< HEAD
         currentAlignment += CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(currentAlignment) ;
+=======
+>>>>>>> origin/SensorDataCollection
         currentAlignment +=metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
         currentAlignment +=metadata.Source.SourceDataTypeSupport.get_instance().get_serialized_sample_max_size(endpoint_data,false, encapsulation_id,currentAlignment);
         if (include_encapsulation) {
@@ -178,7 +181,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
         } 
 
         currentAlignment +=CdrPrimitiveType.LONG.getMaxSizeSerialized(currentAlignment) ;
+<<<<<<< HEAD
         currentAlignment +=CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(currentAlignment) ;
+=======
+>>>>>>> origin/SensorDataCollection
         currentAlignment += metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
         currentAlignment += metadata.Source.SourceDataTypeSupport.get_instance().get_serialized_sample_min_size(endpoint_data,false, encapsulation_id,currentAlignment);
 
@@ -215,8 +221,11 @@ public class MetadataTypeSupport extends TypeSupportImpl {
 
         currentAlignment  +=  CdrPrimitiveType.LONG.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
 
+<<<<<<< HEAD
         currentAlignment  +=  CdrPrimitiveType.BOOLEAN.getMaxSizeSerialized(epd.getAlignment(currentAlignment));
 
+=======
+>>>>>>> origin/SensorDataCollection
         currentAlignment += metadata.Location.LocationDataTypeSupport.get_instance().get_serialized_sample_size(
             endpoint_data,false,encapsulation_id,currentAlignment,typedSrc.location);
 
@@ -276,8 +285,11 @@ public class MetadataTypeSupport extends TypeSupportImpl {
 
             dst.writeLong(typedSrc.timestamp);
 
+<<<<<<< HEAD
             dst.writeBoolean(typedSrc.isValid);
 
+=======
+>>>>>>> origin/SensorDataCollection
             metadata.Location.LocationDataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.location, dst, false, encapsulation_id,true,endpoint_plugin_qos);
 
             metadata.Source.SourceDataTypeSupport.get_instance().serialize(endpoint_data, typedSrc.source, dst, false, encapsulation_id,true,endpoint_plugin_qos);
@@ -346,7 +358,10 @@ public class MetadataTypeSupport extends TypeSupportImpl {
             typedDst.clear();      
             try{
                 typedDst.timestamp = src.readLong();
+<<<<<<< HEAD
                 typedDst.isValid = src.readBoolean();
+=======
+>>>>>>> origin/SensorDataCollection
                 typedDst.location = (metadata.Location.LocationData)metadata.Location.LocationDataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.location, src, false, true, endpoint_plugin_qos);     
                 typedDst.source = (metadata.Source.SourceData)metadata.Source.SourceDataTypeSupport.get_instance().deserialize_sample(endpoint_data, typedDst.source, src, false, true, endpoint_plugin_qos);     
             } catch (IllegalCdrStateException stateEx) {
@@ -435,8 +450,11 @@ public class MetadataTypeSupport extends TypeSupportImpl {
 
             src.skipLong();
 
+<<<<<<< HEAD
             src.skipBoolean();
 
+=======
+>>>>>>> origin/SensorDataCollection
             metadata.Location.LocationDataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
 
             metadata.Source.SourceDataTypeSupport.get_instance().skip(endpoint_data, src, false, true, endpoint_plugin_qos);
