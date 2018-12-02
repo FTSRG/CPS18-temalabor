@@ -12,8 +12,6 @@ package hu.bme.mit.inf.weather.weather.MinimalWeather;
 
 import com.rti.dds.typecode.*;
 
-import hu.bme.mit.inf.weather.metadata.Metadata.MetadataTypeCode;
-
 public class  MinimalWeatherDataTypeCode {
     public static final TypeCode VALUE = getTypeCode();
 
@@ -24,7 +22,7 @@ public class  MinimalWeatherDataTypeCode {
 
         sm[__i]=new  StructMember("Temperature", false, (short)-1,  false,(TypeCode) TypeCode.TC_DOUBLE,0 , false);__i++;
         sm[__i]=new  StructMember("Humidity", false, (short)-1,  false,(TypeCode) TypeCode.TC_DOUBLE,1 , false);__i++;
-        sm[__i]=new  StructMember("metadata", false, (short)-1,  false,(TypeCode) MetadataTypeCode.VALUE,2 , false);__i++;
+        sm[__i]=new  StructMember("metadata", false, (short)-1,  false,(TypeCode) hu.bme.mit.inf.weather.metadata.MetadataTypeCode.VALUE,2 , false);__i++;
 
         tc = TypeCodeFactory.TheTypeCodeFactory.create_struct_tc("weather::MinimalWeather::MinimalWeatherData",ExtensibilityKind.EXTENSIBLE_EXTENSIBILITY,  sm);        
         return tc;
