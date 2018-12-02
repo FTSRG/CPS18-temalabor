@@ -9,8 +9,5 @@
         <module name="pidds" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="pidds" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

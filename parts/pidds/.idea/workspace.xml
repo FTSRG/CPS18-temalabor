@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="pidds16:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="132b05be-b2e3-4c60-8c84-09c8544a9c87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../PiDHTToVoter/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="37fa3b45-4d1f-46e1-a041-d83c98233f98" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/pidds16_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_moshi_moshi_1_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_logging_interceptor_3_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_14_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_converter_moshi_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_retrofit_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_influxdb_influxdb_java_2_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_zeroturnaround_zt_exec_1_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pidds.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DHT22.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DHT22.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationTypeDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationTypeDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationTypeSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationTypeTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocationTypeTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Run TemperaturePublisher.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Run TemperatureSubscriber.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaTypeDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaTypeDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaTypeSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaTypeTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorMetaTypeTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Temperature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureInfluxConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperaturePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureSubscriber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TemperatureTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/USER_QOS_PROFILES.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Weather.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocationDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocationDataWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocationSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocationTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherLocationTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherTypeCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherTypeSupport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/makefile_DataModel_armv6vfphLinux3.xgcc4.7.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java2/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/javav2/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/javav3/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/javav4/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/javaxx/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,145 +81,94 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="-339533234">
+    <session id="1528374005">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
-          <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="2" />
-          <entry key="project.open.time.13" value="2" />
-          <entry key="project.open.time.22" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="17" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="MF" value="5" />
-          <entry key="java" value="9" />
-          <entry key="xml" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="9" />
-          <entry key="Manifest" value="5" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="573" />
-          <entry key="xml" value="3" />
+          <entry key="JAVA" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="573" />
-          <entry key="XML" value="3" />
+          <entry key="JAVA" value="629" />
+          <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WeatherTypeSupport.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DHT22.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Temperature.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TemperaturePublisher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2431">
-              <caret line="202" column="49" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TemperatureSubscriber.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="253" column="26" selection-start-line="253" selection-start-column="26" selection-end-line="253" selection-end-column="26" />
+            <state relative-caret-position="306">
+              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+              <folding>
+                <element signature="e#812#813#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#868#869#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/InfluxConnector.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+            <state relative-caret-position="-85">
+              <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TemperatureInfluxConnector.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="391">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DHT22.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="204">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/metadata/Metadata/Metadata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Example Tem</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/TemperaturePublisher.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/InfluxConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/AccInfluxConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TemperatureInfluxConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TemperatureSubscriber.java" />
+        <option value="$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherData.java" />
         <option value="$PROJECT_DIR$/src/main/java/TemperaturePublisher.java" />
         <option value="$PROJECT_DIR$/src/main/java/DHT22.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java" />
       </list>
     </option>
   </component>
@@ -166,16 +178,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="927" />
-    <option name="y" value="27" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-18" />
+    <option name="y" value="-18" />
     <option name="width" value="3231" />
     <option name="height" value="1836" />
   </component>
@@ -199,33 +204,31 @@
             </path>
             <path>
               <item name="pidds" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="pidds" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540801748349" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543760593394" />
+    <property name="last_opened_file_path" value="C:/Program Files/rti_connext_dds-5.3.1/lib/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.24252874" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dell\IdeaProjects\pidds\src\main\java" />
-      <recent name="C:\Users\dell\IdeaProjects\pidds\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -240,93 +243,50 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TemperatureSubscriber">
-    <configuration name="TemperaturePublisher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TemperaturePublisher" />
-      <module name="pidds" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TemperatureSubscriber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TemperatureSubscriber" />
-      <module name="pidds" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.TemperaturePublisher" />
-      <item itemvalue="Application.TemperatureSubscriber" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.TemperatureSubscriber" />
-        <item itemvalue="Application.TemperaturePublisher" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="132b05be-b2e3-4c60-8c84-09c8544a9c87" name="Default Changelist" comment="" />
-      <created>1539615588084</created>
+      <changelist id="37fa3b45-4d1f-46e1-a041-d83c98233f98" name="Default Changelist" comment="" />
+      <created>1543757777067</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1539615588084</updated>
-      <workItem from="1539615591157" duration="1288000" />
-      <workItem from="1539617047667" duration="1859000" />
-      <workItem from="1540367962997" duration="903000" />
-      <workItem from="1540378882299" duration="378000" />
-      <workItem from="1540379370774" duration="1871000" />
-      <workItem from="1540382916764" duration="1757000" />
-      <workItem from="1540387173945" duration="62000" />
-      <workItem from="1540387893232" duration="14000" />
-      <workItem from="1540550217929" duration="962000" />
-      <workItem from="1540551345354" duration="3209000" />
-      <workItem from="1540764883989" duration="1732000" />
-      <workItem from="1540798570204" duration="1012000" />
-      <workItem from="1540810790791" duration="33000" />
-      <workItem from="1541154175557" duration="542000" />
-      <workItem from="1541233956620" duration="21000" />
-      <workItem from="1541581287895" duration="98000" />
-      <workItem from="1542630625209" duration="21000" />
+      <updated>1543757777067</updated>
+      <workItem from="1543757779883" duration="2837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15762000" />
+    <option name="totallyTimeSpent" value="2837000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1435" height="782" extended-state="6" />
+    <frame x="-6" y="-6" width="1435" height="782" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2973169" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297546" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297546" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.20398773" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,73 +296,91 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/main/java/metadata/Location/LocationData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-1300">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/main/java/weather/ForecastInputWeather/ForecastInputWeatherDataDataReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="209">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WeatherTypeSupport.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherDataDataReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+        <state relative-caret-position="209">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Temperature.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/airport/flights/FlightsData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="17">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TemperaturePublisher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/weather/ExtendedWeather/ExtendedWeatherData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="202" column="49" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
+        <state relative-caret-position="136">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TemperatureSubscriber.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/oldbak/TemperatureSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="253" column="26" selection-start-line="253" selection-start-column="26" selection-end-line="253" selection-end-column="26" />
+        <state relative-caret-position="136">
+          <caret line="64" column="36" lean-forward="true" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TemperatureInfluxConnector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/metadata/Metadata/Metadata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/weather/MinimalWeather/MinimalWeatherData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DHT22.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/InfluxConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MinimalWeatherDataInfluxConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MinimalWeatherDataPublisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
         </state>
       </provider>
     </entry>
@@ -411,18 +389,11 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor>
-            <show-content>
-              <type id="library" />
-              <type id="artifact" />
-            </show-content>
-          </artifact-editor>
-          <last-edited>pidds16:jar</last-edited>
+          <artifact-editor />
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.24252874" />
-                <option value="0.5" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -434,7 +405,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.40689656" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -446,7 +417,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.40689656" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -470,7 +441,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.40689656" />
+                <option value="0.2" />
                 <option value="0.6" />
               </list>
             </option>
@@ -479,6 +450,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -494,7 +466,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.40689656" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
