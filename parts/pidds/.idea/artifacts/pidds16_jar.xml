@@ -1,0 +1,36 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="pidds16:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/pidds16_jar</output-path>
+    <root id="archive" name="pidds.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/javaxx/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="pidds" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/distlog.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/distlogd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/nddsjava.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/nddsjavad.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rtirsadapter.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rticonnextmsg.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rtirsadapterd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rticonnextmsgd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/distlogdatamodel.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/distlogdatamodeld.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rtiroutingservice.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/rti_connext_dds-5.3.1/lib/java/rtiroutingserviced.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/retrofit2/converter-moshi/2.4.0/converter-moshi-2.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/1.4/commons-io-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.7.22/slf4j-log4j12-1.7.22.jar" path-in-jar="/" />
+      <element id="library" level="project" name="i86Linux3.xgcc4.6" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/influxdb/influxdb-java/2.10/influxdb-java-2.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/moshi/moshi/1.5.0/moshi-1.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.10.0/okhttp-3.10.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/zeroturnaround/zt-exec/1.10/zt-exec-1.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/retrofit2/retrofit/2.4.0/retrofit-2.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/okhttp3/logging-interceptor/3.10.0/logging-interceptor-3.10.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/squareup/okio/okio/1.14.0/okio-1.14.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
