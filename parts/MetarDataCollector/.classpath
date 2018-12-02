@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/distlog.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/distlogd.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/distlogdatamodel.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/distlogdatamodeld.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/nddsjava.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/nddsjavad.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rticonnextmsg.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rticonnextmsgd.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtiroutingservice.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtiroutingserviced.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtirsadapter.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/rtidds/rtirsadapterd.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/bin/java/model.jar"/>
+	<classpathentry kind="lib" path="C:/CPS/dependencies/JSoup/jsoup-1.11.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
