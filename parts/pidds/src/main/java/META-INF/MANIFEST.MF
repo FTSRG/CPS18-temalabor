@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+<<<<<<< HEAD
+Main-Class: MinimalWeatherDataPublisher
+=======
+Main-Class: TemperatureSubscriber
+>>>>>>> origin/SensorDataCollection
+
