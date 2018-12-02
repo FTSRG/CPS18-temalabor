@@ -13,6 +13,9 @@ package hu.bme.mit.inf.weather.weather.MinimalWeather;
 
 import com.rti.dds.infrastructure.*;
 import com.rti.dds.infrastructure.Copyable;
+
+import hu.bme.mit.inf.weather.metadata.Metadata.Metadata;
+
 import java.io.Serializable;
 import com.rti.dds.cdr.CdrHelper;
 
@@ -20,7 +23,8 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
     public double Temperature= 0;
     public double Humidity= 0;
-    public hu.bme.mit.inf.weather.metadata.Metadata metadata = (hu.bme.mit.inf.weather.metadata.Metadata)hu.bme.mit.inf.weather.metadata.Metadata.create();
+    public 
+Metadata metadata = (Metadata)Metadata.create();
 
     public MinimalWeatherData() {
 
@@ -103,7 +107,7 @@ public class MinimalWeatherData   implements Copyable, Serializable{
 
         typedDst.Temperature = typedSrc.Temperature;
         typedDst.Humidity = typedSrc.Humidity;
-        typedDst.metadata = (hu.bme.mit.inf.weather.metadata.Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
+        typedDst.metadata = (Metadata) typedDst.metadata.copy_from(typedSrc.metadata);
 
         return this;
     }
