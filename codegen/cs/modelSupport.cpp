@@ -1165,3 +1165,148 @@ namespace weather {
         }
     } /* namespace AirportWeather  */
 } /* namespace weather  */
+namespace airport {
+    namespace flights {
+
+        /* ========================================================================= */
+
+        // ---------------------------------------------------------------------------
+        // FlightsDataDataWriter
+        // ---------------------------------------------------------------------------
+
+        FlightsDataDataWriter::FlightsDataDataWriter(
+            System::IntPtr impl) : DDS::TypedDataWriter<FlightsData^>(impl) {
+            // empty
+        }
+
+        // ---------------------------------------------------------------------------
+        // FlightsDataDataReader
+        // ---------------------------------------------------------------------------
+
+        FlightsDataDataReader::FlightsDataDataReader(
+            System::IntPtr impl) : DDS::TypedDataReader<FlightsData^>(impl) {
+            // empty
+        }
+
+        // ---------------------------------------------------------------------------
+        // FlightsDataTypeSupport
+        // ---------------------------------------------------------------------------
+
+        FlightsDataTypeSupport::FlightsDataTypeSupport()
+        : DDS::TypedTypeSupport<FlightsData^>(
+            FlightsDataPlugin::get_instance()) {
+
+            _type_plugin = FlightsDataPlugin::get_instance();
+        }
+
+        void FlightsDataTypeSupport::register_type(
+            DDS::DomainParticipant^ participant,
+            System::String^ type_name) {
+
+            get_instance()->register_type_untyped(participant, type_name);
+        }
+
+        void FlightsDataTypeSupport::unregister_type(
+            DDS::DomainParticipant^ participant,
+            System::String^ type_name) {
+
+            get_instance()->unregister_type_untyped(participant, type_name);
+        }
+
+        FlightsData^ FlightsDataTypeSupport::create_data() {
+            return gcnew FlightsData();
+        }
+
+        FlightsData^ FlightsDataTypeSupport::create_data_untyped() {
+            return create_data();
+        }
+
+        void FlightsDataTypeSupport::delete_data(
+            FlightsData^ a_data) {
+            /* If the generated type does not implement IDisposable (the default),
+            * the following will no a no-op.
+            */
+            delete a_data;
+        }
+
+        void FlightsDataTypeSupport::print_data(FlightsData^ a_data) {
+            get_instance()->_type_plugin->print_data(a_data, nullptr, 0);
+        }
+
+        void FlightsDataTypeSupport::copy_data(
+            FlightsData^ dst, FlightsData^ src) {
+
+            get_instance()->copy_data_untyped(dst, src);
+        }
+
+        void FlightsDataTypeSupport::serialize_data_to_cdr_buffer(
+            array<System::Byte>^ buffer,
+            System::UInt32% length,
+            FlightsData^ a_data)
+        {
+            if (!get_instance()->_type_plugin->serialize_to_cdr_buffer(buffer,length,a_data)) {
+                throw gcnew Retcode_Error(DDS_RETCODE_ERROR);
+            }
+        }
+
+        void FlightsDataTypeSupport::deserialize_data_from_cdr_buffer(
+            FlightsData^ a_data,
+            array<System::Byte>^ buffer,
+            System::UInt32 length)
+        {
+            if (!get_instance()->_type_plugin->deserialize_from_cdr_buffer(a_data,buffer,length)) {
+                throw gcnew Retcode_Error(DDS_RETCODE_ERROR);
+            }
+        }
+
+        System::String^ FlightsDataTypeSupport::data_to_string(
+            FlightsData ^sample, 
+            PrintFormatProperty ^formatProperty)
+        {
+            return get_instance()->_type_plugin->data_to_string(
+                sample, 
+                formatProperty);
+        }
+
+        System::String^ FlightsDataTypeSupport::data_to_string(
+            FlightsData ^sample)
+        {
+            PrintFormatProperty ^formatProperty = gcnew PrintFormatProperty();
+            return get_instance()->_type_plugin->data_to_string(
+                sample, 
+                formatProperty);
+        }
+
+        DDS::TypeCode^ FlightsDataTypeSupport::get_typecode() {
+            return  FlightsData::get_typecode();
+        }
+
+        System::String^ FlightsDataTypeSupport::get_type_name() {
+            return TYPENAME;
+        }
+
+        System::String^ FlightsDataTypeSupport::get_type_name_untyped() {
+            return TYPENAME;
+        }
+
+        DDS::DataReader^ FlightsDataTypeSupport::create_datareaderI(
+            System::IntPtr impl) {
+
+            return gcnew FlightsDataDataReader(impl);
+        }
+
+        DDS::DataWriter^ FlightsDataTypeSupport::create_datawriterI(
+            System::IntPtr impl) {
+
+            return gcnew FlightsDataDataWriter(impl);
+        }
+
+        FlightsDataTypeSupport^
+        FlightsDataTypeSupport::get_instance() {
+            if (_singleton == nullptr) {
+                _singleton = gcnew FlightsDataTypeSupport();
+            }
+            return _singleton;
+        }
+    } /* namespace flights  */
+} /* namespace airport  */
