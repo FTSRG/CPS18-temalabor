@@ -11,7 +11,7 @@ public class DHT22 {
     private double hum;
 
     public void getData() throws InterruptedException, TimeoutException, IOException {
-        String output = pe.command("./readDHT22fromGPIO16.py")
+        String output = pe.command("/home/pi/readDHT22fromGPIO21.py")
                 .readOutput(true).execute()
                 .outputUTF8();
         System.out.println(output);

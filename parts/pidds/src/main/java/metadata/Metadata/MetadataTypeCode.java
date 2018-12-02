@@ -18,11 +18,12 @@ public class  MetadataTypeCode {
     private static TypeCode getTypeCode() {
         TypeCode tc = null;
         int __i=0;
-        StructMember sm[]=new StructMember[3];
+        StructMember sm[]=new StructMember[4];
 
         sm[__i]=new  StructMember("timestamp", false, (short)-1,  false,(TypeCode) TypeCode.TC_LONGLONG,0 , false);__i++;
-        sm[__i]=new  StructMember("location", false, (short)-1,  false,(TypeCode) metadata.Location.LocationDataTypeCode.VALUE,1 , false);__i++;
-        sm[__i]=new  StructMember("source", false, (short)-1,  false,(TypeCode) metadata.Source.SourceDataTypeCode.VALUE,2 , false);__i++;
+        sm[__i]=new  StructMember("isValid", false, (short)-1,  false,(TypeCode) TypeCode.TC_BOOLEAN,1 , false);__i++;
+        sm[__i]=new  StructMember("location", false, (short)-1,  false,(TypeCode) metadata.Location.LocationDataTypeCode.VALUE,2 , false);__i++;
+        sm[__i]=new  StructMember("source", false, (short)-1,  false,(TypeCode) metadata.Source.SourceDataTypeCode.VALUE,3 , false);__i++;
 
         tc = TypeCodeFactory.TheTypeCodeFactory.create_struct_tc("metadata::Metadata::Metadata",ExtensibilityKind.EXTENSIBLE_EXTENSIBILITY,  sm);        
         return tc;

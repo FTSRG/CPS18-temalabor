@@ -20,8 +20,8 @@ public class MinimalWeatherDataInfluxConnector extends InfluxConnector{
                         .addField("locName", mwd.metadata.location.name)
                         .addField("locLatitude", mwd.metadata.location.latitude)
                         .addField("locLongitude", mwd.metadata.location.longitude)
-                        .addField("locLongitude", mwd.Humidity)
-                        .addField("locLongitude", mwd.Temperature)
+                        .addField("Humidity", mwd.Humidity)
+                        .addField("temperature", mwd.Temperature)
 //                        .addField("isValid", isValid)
                         .build());
 
