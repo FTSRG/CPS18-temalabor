@@ -1224,3 +1224,209 @@ namespace weather {
 
 } /* namespace weather  */
 
+namespace airport {
+
+    namespace flights {
+
+        /* ========================================================================= */
+        FlightsData::FlightsData() {
+            metadata = gcnew metadata::Metadata::Metadata ();
+            id = 0;
+            originAirport = "";
+            destinationAirport = "";
+            weatherDelay = 0;
+        }
+
+        void FlightsData::clear(){
+            if (metadata!= nullptr) {
+                metadata->clear();
+            }
+            id = 0;
+            originAirport = "";
+            destinationAirport = "";
+            weatherDelay = 0;
+        }
+
+        System::Boolean FlightsData::copy_from(FlightsData^ src) {
+
+            FlightsData^ dst = this;
+
+            dst->metadata->copy_from(src->metadata); 
+            dst->id = src->id;
+            dst->originAirport = src->originAirport;
+            dst->destinationAirport = src->destinationAirport;
+            dst->weatherDelay = src->weatherDelay;
+            return true;
+        }
+
+        Boolean FlightsData::Equals(Object^ other) {
+            if (other == nullptr) {
+                return false;
+            }        
+            if (this == other) {
+                return true;
+            }
+            FlightsData^ otherObj =
+            dynamic_cast<FlightsData^>(other);
+            if (otherObj == nullptr) {
+                return false;
+            }
+
+            if (!metadata->Equals(otherObj->metadata)) {
+                return false;
+            }
+            if (id != otherObj->id) {
+                return false;
+            }
+            if (!originAirport->Equals(otherObj->originAirport)) {
+                return false;
+            }
+            if (!destinationAirport->Equals(otherObj->destinationAirport)) {
+                return false;
+            }
+            if (weatherDelay != otherObj->weatherDelay) {
+                return false;
+            }
+            return true;
+        }
+
+        DDS::TypeCode^ FlightsData::get_typecode() {
+            if (_typecode == nullptr) {
+                _typecode = gcnew DDS::TypeCode(FlightsData_get_typecode());
+            }
+            return _typecode;
+        }
+
+        DDS_TypeCode* FlightsData_get_typecode()
+        {
+            static RTIBool is_initialized = RTI_FALSE;
+
+            static DDS_TypeCode FlightsData_g_tc_originAirport_string = DDS_INITIALIZE_STRING_TYPECODE((5));
+            static DDS_TypeCode FlightsData_g_tc_destinationAirport_string = DDS_INITIALIZE_STRING_TYPECODE((5));
+            static DDS_TypeCode_Member FlightsData_g_tc_members[5]=
+            {
+
+                {
+                    (char *)"metadata",/* Member name */
+                    {
+                        0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"id",/* Member name */
+                    {
+                        1,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"originAirport",/* Member name */
+                    {
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"destinationAirport",/* Member name */
+                    {
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"weatherDelay",/* Member name */
+                    {
+                        4,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }
+            };
+
+            static DDS_TypeCode FlightsData_g_tc =
+            {{
+                    DDS_TK_STRUCT,/* Kind */
+                    DDS_BOOLEAN_FALSE, /* Ignored */
+                    -1, /*Ignored*/
+                    (char *)"airport::flights::FlightsData", /* Name */
+                    NULL, /* Ignored */      
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    5, /* Number of members */
+                    FlightsData_g_tc_members, /* Members */
+                    DDS_VM_NONE  /* Ignored */         
+                }}; /* Type code for FlightsData*/
+
+            if (is_initialized) {
+                return &FlightsData_g_tc;
+            }
+
+            FlightsData_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)metadata::Metadata::Metadata_get_typecode();
+
+            FlightsData_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            FlightsData_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&FlightsData_g_tc_originAirport_string;
+
+            FlightsData_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&FlightsData_g_tc_destinationAirport_string;
+
+            FlightsData_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            is_initialized = RTI_TRUE;
+
+            return &FlightsData_g_tc;
+        }
+    } /* namespace flights  */
+
+} /* namespace airport  */
+

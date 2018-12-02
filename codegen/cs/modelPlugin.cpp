@@ -4012,3 +4012,550 @@ namespace weather {
 
     } /* namespace AirportWeather  */
 } /* namespace weather  */
+namespace airport {
+    namespace flights {
+
+        /* ------------------------------------------------------------------------
+        *  Type FlightsData
+        * ------------------------------------------------------------------------ */
+
+        /* ------------------------------------------------------------------------
+        Support functions:
+        * ------------------------------------------------------------------------ */
+
+        void 
+        FlightsDataPlugin::print_data(
+            FlightsData^ sample,
+            String^ desc,
+            UInt32 indent_level) {
+
+            for (UInt32 i = 0; i < indent_level; ++i) { Console::Write("   "); }
+
+            if (desc != nullptr) {
+                Console::WriteLine("{0}:", desc);
+            } else {
+                Console::WriteLine();
+            }
+
+            if (sample == nullptr) {
+                Console::WriteLine("null");
+                return;
+            }
+
+            DataPrintUtility::print_object(
+                sample->metadata, "metadata", indent_level);
+
+            DataPrintUtility::print_object(
+                sample->id, "id", indent_level);
+
+            DataPrintUtility::print_object(
+                sample->originAirport, "originAirport", indent_level);
+
+            DataPrintUtility::print_object(
+                sample->destinationAirport, "destinationAirport", indent_level);
+
+            DataPrintUtility::print_object(
+                sample->weatherDelay, "weatherDelay", indent_level);
+
+        }
+
+        /* ------------------------------------------------------------------------
+        (De)Serialize functions:
+        * ------------------------------------------------------------------------ */
+
+        Boolean 
+        FlightsDataPlugin::serialize(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            FlightsData^ sample,
+            CdrStream% stream,    
+            Boolean serialize_encapsulation,
+            UInt16 encapsulation_id,
+            Boolean serialize_sample, 
+            Object^ endpoint_plugin_qos)
+        {
+            CdrStreamPosition position;
+
+            if (serialize_encapsulation) {
+                /* Encapsulate sample */
+
+                if (!stream.serialize_and_set_cdr_encapsulation(encapsulation_id)) {
+                    return false;
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (serialize_sample) {
+
+                if (!metadata::Metadata::MetadataPlugin::get_instance()->serialize(
+                    endpoint_data,
+                    sample->metadata,
+                    stream,
+                    false, // serialize encapsulation header
+                    encapsulation_id,
+                    true,  // serialize data
+                    endpoint_plugin_qos)) {
+                    return false;
+                }
+                if (!stream.serialize_long(sample->id )) {
+                    return false;
+                }
+                if (!stream.serialize_string(sample->originAirport  , (5))) {
+                    return false;
+                }
+                if (!stream.serialize_string(sample->destinationAirport  , (5))) {
+                    return false;
+                }
+                if (!stream.serialize_long(sample->weatherDelay )) {
+                    return false;
+                }
+
+            }
+
+            if(serialize_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+        }
+
+        Boolean 
+        FlightsDataPlugin::deserialize_sample(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            FlightsData^ sample,
+            CdrStream% stream,   
+            Boolean deserialize_encapsulation,
+            Boolean deserialize_data, 
+            Object^ endpoint_plugin_qos)
+        {
+            CdrStreamPosition position;
+
+            if(deserialize_encapsulation) {
+                /* Deserialize encapsulation */
+                if (!stream.deserialize_and_set_cdr_encapsulation()) {
+                    return false;
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (deserialize_data) {
+                sample->clear();                
+
+                try{
+
+                    if (!metadata::Metadata::MetadataPlugin::get_instance()->deserialize_sample(
+                        endpoint_data,
+                        sample->metadata,
+                        stream,
+                        false, // deserialize encapsulation header
+                        true,  // deserialize data
+                        endpoint_plugin_qos)) {
+                        return false;
+                    }
+                    sample->id = stream.deserialize_long();
+                    sample->originAirport = stream.deserialize_string( (5));
+                    if (sample->originAirport  == nullptr) {
+                        return false;
+                    }
+                    sample->destinationAirport = stream.deserialize_string( (5));
+                    if (sample->destinationAirport  == nullptr) {
+                        return false;
+                    }
+                    sample->weatherDelay = stream.deserialize_long();
+
+                } catch (System::ApplicationException^  e) {
+                    if (stream.get_remainder() >= RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                        throw gcnew System::ApplicationException("Error deserializing sample! Remainder: " + stream.get_remainder() + "\n" +
+                        "Exception caused by: " + e->Message);
+                    }
+                }
+            }
+
+            if(deserialize_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+        }
+
+        Boolean
+        FlightsDataPlugin::skip(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            CdrStream% stream,   
+            Boolean skip_encapsulation,
+            Boolean skip_sample, 
+            Object^ endpoint_plugin_qos)
+        {
+            CdrStreamPosition position;
+
+            if (skip_encapsulation) {
+                if (!stream.skip_encapsulation()) {
+                    return false;
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (skip_sample) {
+                if (!metadata::Metadata::MetadataPlugin::get_instance()->skip(
+                    endpoint_data,
+                    stream, 
+                    false, true, 
+                    endpoint_plugin_qos)) {
+                    return false;
+                }
+                if (!stream.skip_long()) {
+                    return false;
+                }
+                if (!stream.skip_string((5))) {
+                    return false;
+                }
+                if (!stream.skip_string((5))) {
+                    return false;
+                }
+                if (!stream.skip_long()) {
+                    return false;
+                }
+            }
+
+            if(skip_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+        }
+
+        /*
+        size is the offset from the point where we have do a logical reset
+        Return difference in size, not the final offset.
+        */
+        UInt32 
+        FlightsDataPlugin::get_serialized_sample_max_size(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            Boolean include_encapsulation,
+            UInt16 encapsulation_id,
+            UInt32 current_alignment)
+        {
+
+            UInt32 initial_alignment = current_alignment;
+
+            UInt32 encapsulation_size = current_alignment;
+
+            if (include_encapsulation) {
+                if (!CdrStream::valid_encapsulation_id(encapsulation_id)) {
+                    return 1;
+                }
+
+                encapsulation_size = CdrSizes::ENCAPSULATION->serialized_size(
+                    current_alignment);
+                encapsulation_size -= current_alignment;
+                current_alignment = 0;
+                initial_alignment = 0;
+
+            }
+
+            current_alignment +=  metadata::Metadata::MetadataPlugin::get_instance()->get_serialized_sample_max_size(
+                endpoint_data, false, encapsulation_id, current_alignment);
+
+            current_alignment +=CdrSizes::LONG->serialized_size(
+                current_alignment );
+
+            current_alignment +=CdrSizes::STRING->serialized_size(
+                current_alignment , (5)+1);
+
+            current_alignment +=CdrSizes::STRING->serialized_size(
+                current_alignment , (5)+1);
+
+            current_alignment +=CdrSizes::LONG->serialized_size(
+                current_alignment );
+
+            if (include_encapsulation) {
+                current_alignment += encapsulation_size;
+            }
+
+            return  current_alignment - initial_alignment;
+        }
+
+        UInt32
+        FlightsDataPlugin::get_serialized_sample_min_size(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            Boolean include_encapsulation,
+            UInt16 encapsulation_id,
+            UInt32 current_alignment)
+        {
+
+            UInt32 initial_alignment = current_alignment;
+
+            UInt32 encapsulation_size = current_alignment;
+
+            if (include_encapsulation) {
+                if (!CdrStream::valid_encapsulation_id(encapsulation_id)) {
+                    return 1;
+                }
+
+                encapsulation_size = CdrSizes::ENCAPSULATION->serialized_size(
+                    encapsulation_size);
+                current_alignment = 0;
+                initial_alignment = 0;
+
+            }
+
+            current_alignment +=  metadata::Metadata::MetadataPlugin::get_instance()->get_serialized_sample_min_size(
+                endpoint_data, false, encapsulation_id, current_alignment);
+
+            current_alignment +=CdrSizes::LONG->serialized_size(
+                current_alignment);
+            current_alignment +=CdrSizes::STRING->serialized_size(
+                current_alignment, 1);
+            current_alignment +=CdrSizes::STRING->serialized_size(
+                current_alignment, 1);
+            current_alignment +=CdrSizes::LONG->serialized_size(
+                current_alignment);
+
+            if (include_encapsulation) {
+                current_alignment += encapsulation_size;
+            }
+
+            return  current_alignment - initial_alignment;
+        }
+
+        UInt32 
+        FlightsDataPlugin::get_serialized_sample_size(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            Boolean include_encapsulation,
+            UInt16 encapsulation_id,
+            UInt32 current_alignment,
+            FlightsData^ sample)
+        {
+
+            UInt32 initial_alignment = current_alignment;
+
+            UInt32 encapsulation_size = current_alignment;
+
+            if (include_encapsulation) {
+                if (!CdrStream::valid_encapsulation_id(encapsulation_id)) {
+                    return 1;
+                }
+
+                encapsulation_size = CdrSizes::ENCAPSULATION->serialized_size(
+                    current_alignment);
+                encapsulation_size -= current_alignment;
+                current_alignment = 0;
+                initial_alignment = 0;
+                endpoint_data->set_base_alignment(current_alignment);  
+            }
+
+            current_alignment += metadata::Metadata::MetadataPlugin::get_instance()->get_serialized_sample_size(
+                endpoint_data, false, encapsulation_id, current_alignment, sample->metadata);
+
+            current_alignment += CdrSizes::LONG->serialized_size(
+                endpoint_data->get_alignment(current_alignment));
+
+            current_alignment += CdrSizes::STRING->serialized_size(
+                endpoint_data->get_alignment(current_alignment), sample->originAirport);
+
+            current_alignment += CdrSizes::STRING->serialized_size(
+                endpoint_data->get_alignment(current_alignment), sample->destinationAirport);
+
+            current_alignment += CdrSizes::LONG->serialized_size(
+                endpoint_data->get_alignment(current_alignment));
+            if (include_encapsulation) {
+                current_alignment += encapsulation_size;
+            }
+
+            return current_alignment - initial_alignment;
+        }
+
+        UInt32
+        FlightsDataPlugin::get_serialized_key_max_size(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            Boolean include_encapsulation,
+            UInt16 encapsulation_id,
+            UInt32 current_alignment)
+        {
+
+            UInt32 encapsulation_size = current_alignment;
+
+            UInt32 initial_alignment = current_alignment;
+
+            if (include_encapsulation) {
+                if (!CdrStream::valid_encapsulation_id(encapsulation_id)) {
+                    return 1;
+                }
+
+                encapsulation_size = CdrSizes::ENCAPSULATION->serialized_size(
+                    current_alignment);
+                current_alignment = 0;
+                initial_alignment = 0;
+
+            }
+
+            current_alignment +=get_serialized_sample_max_size(
+                endpoint_data,false, encapsulation_id, current_alignment);
+
+            if (include_encapsulation) {
+                current_alignment += encapsulation_size;
+            }
+
+            return current_alignment - initial_alignment;
+
+        }
+
+        /* ------------------------------------------------------------------------
+        Key Management functions:
+        * ------------------------------------------------------------------------ */
+
+        Boolean 
+        FlightsDataPlugin::serialize_key(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            FlightsData^ sample,
+            CdrStream% stream,    
+            Boolean serialize_encapsulation,
+            UInt16 encapsulation_id,
+            Boolean serialize_key,
+            Object^ endpoint_plugin_qos)
+        {
+
+            CdrStreamPosition position;
+
+            if (serialize_encapsulation) {
+                /* Encapsulate sample */
+
+                if (!stream.serialize_and_set_cdr_encapsulation(encapsulation_id)) {
+                    return false;
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (serialize_key) {
+                if (!serialize(
+                    endpoint_data,
+                    sample,
+                    stream,
+                    serialize_encapsulation,
+                    encapsulation_id, 
+                    serialize_key,
+                    endpoint_plugin_qos)) {
+                    return false;
+                }
+
+            }
+
+            if(serialize_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+
+        }
+
+        Boolean FlightsDataPlugin::deserialize_key_sample(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            FlightsData^ sample,
+            CdrStream% stream, 
+            Boolean deserialize_encapsulation,
+            Boolean deserialize_key,
+            Object^ endpoint_plugin_qos)
+        {
+
+            CdrStreamPosition position;
+
+            if (deserialize_encapsulation) {
+                /* Deserialize encapsulation */
+                if (!stream.deserialize_and_set_cdr_encapsulation()) {
+                    return false;  
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (deserialize_key) {
+
+                if (!deserialize_sample(
+                    endpoint_data, sample, stream,
+                    deserialize_encapsulation,
+                    deserialize_key,
+                    endpoint_plugin_qos)) {
+                    return false;
+                }
+
+            }
+
+            if(deserialize_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+
+        }
+
+        Boolean
+        FlightsDataPlugin::serialized_sample_to_key(
+            TypePluginDefaultEndpointData^ endpoint_data,
+            FlightsData^ sample,
+            CdrStream% stream, 
+            Boolean deserialize_encapsulation,  
+            Boolean deserialize_key, 
+            Object^ endpoint_plugin_qos)
+        {
+
+            CdrStreamPosition position;
+
+            if(deserialize_encapsulation) {
+                if (!stream.deserialize_and_set_cdr_encapsulation()) {
+                    return false;
+                }
+
+                position = stream.reset_alignment();
+
+            }
+
+            if (deserialize_key) {
+
+                if (!deserialize_sample(
+                    endpoint_data,
+                    sample,
+                    stream,
+                    deserialize_encapsulation,
+                    deserialize_key,
+                    endpoint_plugin_qos)) {
+                    return false;
+                }
+
+            }
+
+            if(deserialize_encapsulation) {
+                stream.restore_alignment(position);
+            }
+
+            return true;
+
+        }
+
+        /* ------------------------------------------------------------------------
+        * Plug-in Lifecycle Methods
+        * ------------------------------------------------------------------------ */
+
+        FlightsDataPlugin^
+        FlightsDataPlugin::get_instance() {
+            if (_singleton == nullptr) {
+                _singleton = gcnew FlightsDataPlugin();
+            }
+            return _singleton;
+        }
+
+        void
+        FlightsDataPlugin::dispose() {
+            delete _singleton;
+            _singleton = nullptr;
+        }
+
+    } /* namespace flights  */
+} /* namespace airport  */

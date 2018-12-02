@@ -1114,3 +1114,142 @@ namespace weather {
         };
     } /* namespace AirportWeather  */
 } /* namespace weather  */
+namespace airport {
+    namespace flights {
+        // ---------------------------------------------------------------------------
+        // FlightsDataTypeSupport
+        // ---------------------------------------------------------------------------
+
+        ref class FlightsDataPlugin;
+
+        /* A collection of useful methods for dealing with objects of type
+        * FlightsData.
+        */
+        public ref class FlightsDataTypeSupport
+        : public DDS::TypedTypeSupport<FlightsData^> {
+            // --- Type name: --------------------------------------------------------
+          public:
+            static System::String^ TYPENAME = "airport::flights::FlightsData";
+
+            // --- Public Methods: ---------------------------------------------------
+          public:
+            /* Get the default name of this type.
+            *
+            * An application can choose to register a type under any name, so
+            * calling this method is strictly optional.
+            */
+            static System::String^ get_type_name();
+
+            /* Register this type with the given participant under the given logical
+            * name. This type must be registered before a Topic can be created that
+            * uses it.
+            */
+            static void register_type(
+                DDS::DomainParticipant^ participant,
+                System::String^ type_name);
+
+            /* Unregister this type from the given participant, where it was
+            * previously registered under the given name. No further Topic creation
+            * using this type will be possible.
+            *
+            * Unregistration allows some middleware resources to be reclaimed.
+            */
+            static void unregister_type(
+                DDS::DomainParticipant^ participant,
+                System::String^ type_name);
+
+            /* Create an instance of the FlightsData type.
+            */
+            static FlightsData^ create_data();
+
+            /* If instances of the FlightsData type require any
+            * explicit finalization, perform it now on the given sample.
+            */
+            static void delete_data(FlightsData^ data);
+
+            /* Write the contents of the data sample to standard out.
+            */
+            static void print_data(FlightsData^ a_data);
+
+            /* Perform a deep copy of the contents of one data sample over those of
+            * another, overwriting it.
+            */
+            static void copy_data(
+                FlightsData^ dst_data,
+                FlightsData^ src_data);
+
+            static void serialize_data_to_cdr_buffer(
+                array<System::Byte>^ buffer,
+                System::UInt32% length,
+                FlightsData^ a_data);
+
+            static void deserialize_data_from_cdr_buffer(
+                FlightsData^ a_data,
+                array<System::Byte>^ buffer,
+                System::UInt32 length);
+
+            static System::String^ data_to_string(
+                FlightsData ^sample,
+                PrintFormatProperty ^property);
+
+            static System::String^ data_to_string(
+                FlightsData ^sample);
+
+            static DDS::TypeCode^ get_typecode();
+
+            // --- Implementation: ---------------------------------------------------
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+          public:
+            virtual System::String^ get_type_name_untyped() override;
+            virtual DDS::DataReader^ create_datareaderI(
+                System::IntPtr impl) override;
+            virtual DDS::DataWriter^ create_datawriterI(
+                System::IntPtr impl) override;
+
+            virtual FlightsData^ create_data_untyped() override;
+
+          public:
+            static FlightsDataTypeSupport^ get_instance();
+
+            FlightsDataTypeSupport();
+
+          private:
+            static FlightsDataTypeSupport^ _singleton;
+            FlightsDataPlugin^ _type_plugin;
+        };
+
+        // ---------------------------------------------------------------------------
+        // FlightsDataDataReader
+        // ---------------------------------------------------------------------------
+
+        /**
+        * A reader for the FlightsData type.
+        */
+        public ref class FlightsDataDataReader :
+        public DDS::TypedDataReader<FlightsData^> {
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+            internal:
+            FlightsDataDataReader(System::IntPtr impl);
+        };
+
+        // ---------------------------------------------------------------------------
+        // FlightsDataDataWriter
+        // ---------------------------------------------------------------------------
+
+        /**
+        * A writer for the FlightsData user type.
+        */
+        public ref class FlightsDataDataWriter :
+        public DDS::TypedDataWriter<FlightsData^> {
+            /* The following code is for the use of the middleware infrastructure.
+            * Applications are not expected to call it directly.
+            */
+            internal:
+            FlightsDataDataWriter(System::IntPtr impl);
+        };
+    } /* namespace flights  */
+} /* namespace airport  */
