@@ -2,6 +2,11 @@
 <dds version="5.2.0" xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.0/rti_dds_profiles.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<types xsi:noNamespaceSchemaLocation="file:///C:/Program Files/rti_connext_dds-5.3.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
 		<module name="metadata">
+			<module name="Source">
+				<struct name="SourceData">
+					<member name="name" type="string" stringMaxLength="60"/>
+				</struct>
+			</module>
 			<module name="Location">
 				<struct name="LocationData">
 					<member name="name" type="string" stringMaxLength="60"/>
@@ -13,6 +18,7 @@
 				<struct name="Metadata">
 					<member name="timestamp" type="long"/>
 					<member name="location" type="nonBasic" nonBasicTypeName="metadata::Location::LocationData"/>
+					<member name="source" type="nonBasic" nonBasicTypeName="metadata::Source::SourceData"/>
 				</struct>
 			</module>
 		</module>

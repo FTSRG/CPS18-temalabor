@@ -13,6 +13,121 @@ or consult the RTI Connext manual.
 
 namespace metadata {
 
+    namespace Source {
+
+        /* ------------------------------------------------------------------------
+        * Type: SourceData
+        * ------------------------------------------------------------------------ */
+
+        public ref class SourceDataPlugin :
+        DefaultTypePlugin<SourceData^> {
+            // --- Support methods: ------------------------------------------------------
+          public:
+            void print_data(
+                SourceData^ sample,
+                System::String^ desc,
+                System::UInt32 indent);
+
+            // --- (De)Serialize methods: ------------------------------------------------
+          public:
+            virtual System::Boolean serialize(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                SourceData^ sample,
+                CdrStream% stream,
+                System::Boolean serialize_encapsulation,
+                System::UInt16  encapsulation_id,
+                System::Boolean serialize_sample,
+                System::Object^ endpoint_plugin_qos) override;
+
+            virtual System::Boolean deserialize_sample(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                SourceData^ sample,
+                CdrStream% stream,
+                System::Boolean deserialize_encapsulation,
+                System::Boolean deserialize_sample, 
+                System::Object^ endpoint_plugin_qos) override;
+
+            System::Boolean skip(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                CdrStream% stream,
+                System::Boolean skip_encapsulation,  
+                System::Boolean skip_sample, 
+                System::Object^ endpoint_plugin_qos);
+
+            virtual System::UInt32 get_serialized_sample_max_size(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                System::Boolean include_encapsulation,
+                System::UInt16  encapsulation_id,
+                System::UInt32 size) override;
+
+            virtual System::UInt32 get_serialized_sample_min_size(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                System::Boolean include_encapsulation,
+                System::UInt16  encapsulation_id,
+                System::UInt32 size) override;
+
+            virtual System::UInt32 get_serialized_sample_size(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                Boolean include_encapsulation,
+                UInt16 encapsulation_id,
+                UInt32 current_alignment,
+                SourceData^ sample) override;
+
+            // ---  Key Management functions: --------------------------------------------
+          public:
+            virtual System::UInt32 get_serialized_key_max_size(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                System::Boolean include_encapsulation,
+                System::UInt16  encapsulation_id,
+                System::UInt32 current_alignment) override;
+
+            virtual System::Boolean serialize_key(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                SourceData^ key,
+                CdrStream% stream,
+                System::Boolean serialize_encapsulation,
+                System::UInt16  encapsulation_id,
+                System::Boolean serialize_sample,
+                System::Object^ endpoint_plugin_qos) override;
+
+            virtual System::Boolean deserialize_key_sample(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                SourceData^ key,
+                CdrStream% stream,
+                System::Boolean deserialize_encapsulation,
+                System::Boolean deserialize_sample,
+                System::Object^ endpoint_plugin_qos) override;
+
+            System::Boolean serialized_sample_to_key(
+                TypePluginDefaultEndpointData^ endpoint_data,
+                SourceData^ sample,
+                CdrStream% stream,
+                System::Boolean deserialize_encapsulation,
+                System::Boolean deserialize_key,
+                System::Object^ endpoint_plugin_qos);
+
+            // ---  Plug-in lifecycle management methods: --------------------------------
+          public:
+            static SourceDataPlugin^ get_instance();
+
+            static void dispose();
+
+          private:
+            SourceDataPlugin()
+            : DefaultTypePlugin(
+                "SourceData",
+
+                false, // not keyed    
+                false, // use RTPS-compliant alignment
+                SourceData::get_typecode() ) {
+                // empty
+            }
+
+            static SourceDataPlugin^ _singleton;
+        };
+
+    } /* namespace Source  */
+
     namespace Location {
 
         /* ------------------------------------------------------------------------
